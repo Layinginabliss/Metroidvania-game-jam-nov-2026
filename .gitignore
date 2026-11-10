@@ -1,0 +1,20 @@
+
+# Godot generated files
+.godot/
+
+# Mono / C# generated files
+.mono/
+.data/
+
+# IDE files
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak

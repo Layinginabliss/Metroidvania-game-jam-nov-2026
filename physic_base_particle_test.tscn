@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cvbyoeb7gsag0"]
+
+[ext_resource type="Script" uid="uid://dkdgc3fcdtv1b" path="res://physic_base_particle_test.gd" id="1_46suh"]
+[ext_resource type="Script" uid="uid://hya7bvwj8e82" path="res://particle.gd" id="2_r3wdo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8jsy"]
+size = Vector2(1166, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_46suh"]
+radius = 17.029387
+
+[node name="Node2D" type="Node2D" unique_id=178931357]
+script = ExtResource("1_46suh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=337528425]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1619943424]
+position = Vector2(573, 643)
+shape = SubResource("RectangleShape2D_p8jsy")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1462352379]
+position = Vector2(370, 206)
+script = ExtResource("2_r3wdo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=925372988]
+shape = SubResource("CircleShape2D_46suh")
+
+[node name="despawn_timer" type="Timer" parent="RigidBody2D" unique_id=1417506852]
+one_shot = true
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="." unique_id=30498763]
+position = Vector2(442, 203)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2" unique_id=1560824245]
+shape = SubResource("CircleShape2D_46suh")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="." unique_id=376279476]
+position = Vector2(529, 203)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3" unique_id=1341006260]
+shape = SubResource("CircleShape2D_46suh")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="." unique_id=1349430111]
+position = Vector2(367, 78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4" unique_id=2124207326]
+shape = SubResource("CircleShape2D_46suh")
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="." unique_id=691728742]
+position = Vector2(444, 37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5" unique_id=570300310]
+shape = SubResource("CircleShape2D_46suh")
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="." unique_id=137987111]
+position = Vector2(528, 75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D6" unique_id=889888499]
+shape = SubResource("CircleShape2D_46suh")
+
+[connection signal="timeout" from="RigidBody2D/despawn_timer" to="RigidBody2D" method="_on_despawn_timer_timeout"]

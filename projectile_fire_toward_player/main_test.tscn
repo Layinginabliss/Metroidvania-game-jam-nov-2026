@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://btv83cph2v7tk"]
+
+[ext_resource type="Script" uid="uid://0fg4qj3r4srr" path="res://projectile_fire_toward_player/character_body_2d.gd" id="1_5eifu"]
+[ext_resource type="Script" uid="uid://cm74e3mhem55s" path="res://projectile_fire_toward_player/attack.gd" id="2_m8hq3"]
+[ext_resource type="Texture2D" uid="uid://bmwbumc35cnqm" path="res://icon.svg" id="3_tihy8"]
+[ext_resource type="Script" uid="uid://cfjjh1jkp1x7v" path="res://projectile_fire_toward_player/attack_to.gd" id="4_m8hq3"]
+[ext_resource type="Script" uid="uid://dbm6bee5w10uv" path="res://projectile_fire_toward_player/spear.gd" id="5_tihy8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mijvv"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dxu3u"]
+points = PackedVector2Array(195, -19, 241, -202, 93, -135, -7, -31)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_bfipm"]
+points = PackedVector2Array(280, -10, 282, -129, 16, -103, -14, -1)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_6lgnl"]
+points = PackedVector2Array(136, -10, 252, -44, 24, -166, -54, -104)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pgddy"]
+points = PackedVector2Array(66, -15, 57, -75, -76, -136, -76, -51)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxu3u"]
+radius = 37.0
+height = 128.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_54b8x"]
+points = PackedVector2Array(78, 82, 83.20715, -6.8242493, -13, 33)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_mijvv"]
+points = PackedVector2Array(77.51196, 96.061966, 83.20715, -6.8242493, -11.990952, 37.69905)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mijvv"]
+radius = 62.649822
+
+[sub_resource type="LabelSettings" id="LabelSettings_bfipm"]
+font_size = 31
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tihy8"]
+size = Vector2(124, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m8hq3"]
+radius = 12.0415945
+
+[node name="Node2D" type="Node2D" unique_id=1308494746]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1013035249]
+position = Vector2(602, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1871446411]
+position = Vector2(0, -32)
+shape = SubResource("WorldBoundaryShape2D_mijvv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=806270682]
+shape = SubResource("ConvexPolygonShape2D_dxu3u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1642351117]
+position = Vector2(262, -206)
+shape = SubResource("ConvexPolygonShape2D_bfipm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=998388521]
+position = Vector2(1, -426)
+shape = SubResource("ConvexPolygonShape2D_6lgnl")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1500949764]
+position = Vector2(-528, -160)
+shape = SubResource("ConvexPolygonShape2D_pgddy")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1781072180]
+position = Vector2(241, 301)
+script = ExtResource("1_5eifu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1174520328]
+shape = SubResource("CapsuleShape2D_dxu3u")
+
+[node name="directions" type="Node2D" parent="CharacterBody2D" unique_id=687722375]
+
+[node name="right" type="Area2D" parent="CharacterBody2D/directions" unique_id=600062248]
+script = ExtResource("2_m8hq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/right" unique_id=373168769]
+position = Vector2(57, -59)
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/right" unique_id=970889951]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_tihy8")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/right/cool_down" unique_id=1472429527]
+one_shot = true
+
+[node name="left" type="Area2D" parent="CharacterBody2D/directions" unique_id=2132695420]
+position = Vector2(-199, -7)
+script = ExtResource("2_m8hq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/left" unique_id=720338061]
+position = Vector2(146, 10)
+rotation = 3.0979595
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/left" unique_id=1026445312]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_tihy8")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/left/cool_down" unique_id=1940494020]
+one_shot = true
+
+[node name="up" type="Area2D" parent="CharacterBody2D/directions" unique_id=228748402]
+position = Vector2(-148, -95)
+script = ExtResource("2_m8hq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/up" unique_id=1399536902]
+position = Vector2(112, 9.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_mijvv")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/up" unique_id=1452486953]
+visible = false
+position = Vector2(153, -34)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_tihy8")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/up/cool_down" unique_id=1775427302]
+one_shot = true
+
+[node name="down" type="Area2D" parent="CharacterBody2D/directions" unique_id=977371487]
+position = Vector2(147, 86)
+rotation = 3.1101768
+script = ExtResource("2_m8hq3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/down" unique_id=562380562]
+position = Vector2(121, 10.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/down" unique_id=680604877]
+visible = false
+position = Vector2(157.17943, -35.080204)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_tihy8")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/down/cool_down" unique_id=1725139259]
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1905445362]
+position = Vector2(606, 361)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1926489009]
+position = Vector2(-90, 53)
+shape = SubResource("CircleShape2D_mijvv")
+debug_color = Color(0.64916515, 0.518538, 0.1271945, 0.41960785)
+
+[node name="Label3" type="Label" parent="." unique_id=1655512647]
+offset_left = 33.0
+offset_top = -337.0
+offset_right = 945.0
+offset_bottom = -152.0
+text = "add an slow enemy that crawl toward you...
+fix the door enemy spawn and close
+add enemy hit  system to take damge move around
+ ask chat gpt or some if needed
+and armor set up to things"
+label_settings = SubResource("LabelSettings_bfipm")
+
+[node name="attack_to" type="Node2D" parent="." unique_id=387267054 node_paths=PackedStringArray("attack_to")]
+script = ExtResource("4_m8hq3")
+attack_to = NodePath("../CharacterBody2D")
+
+[node name="spear" type="Area2D" parent="attack_to" unique_id=293714697]
+script = ExtResource("5_tihy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_to/spear" unique_id=1152611535]
+position = Vector2(52, -1)
+shape = SubResource("RectangleShape2D_tihy8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="attack_to/spear" unique_id=377075904]
+position = Vector2(111, 0)
+shape = SubResource("CircleShape2D_m8hq3")
+
+[node name="cool_down_timer" type="Timer" parent="attack_to" unique_id=1435436220]
+autostart = true
+
+[node name="traviling_projectlies" type="Node2D" parent="attack_to" unique_id=1818190561]
+
+[connection signal="timeout" from="CharacterBody2D/directions/right/cool_down/attack_cool_down" to="CharacterBody2D/directions/right" method="_on_attack_cool_down_timeout"]
+[connection signal="timeout" from="attack_to/cool_down_timer" to="attack_to" method="_on_cool_down_timer_timeout"]
