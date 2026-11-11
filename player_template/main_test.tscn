@@ -155,5 +155,3 @@ offset_bottom = 79.0
 text = "left click to attack
 righ click to dash
 wasd to move and look"
-
-[connection signal="timeout" from="CharacterBody2D/directions/right/cool_down/attack_cool_down" to="CharacterBody2D/directions/right" method="_on_attack_cool_down_timeout"]

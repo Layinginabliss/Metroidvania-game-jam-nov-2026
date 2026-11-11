@@ -164,5 +164,3 @@ shape = SubResource("RectangleShape2D_2i1p8")
 
 [node name="move_toward" type="Node2D" parent="door" unique_id=528259066]
 position = Vector2(-168, 0)
-
-[connection signal="timeout" from="CharacterBody2D/directions/right/cool_down/attack_cool_down" to="CharacterBody2D/directions/right" method="_on_attack_cool_down_timeout"]

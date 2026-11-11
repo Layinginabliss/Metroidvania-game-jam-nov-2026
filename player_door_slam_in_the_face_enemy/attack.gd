@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 
-func damge(x):
+func damage(x):
 	if not $cool_down.visible and inside_area != null:
 		var viewport_size = get_viewport_rect().size
 
