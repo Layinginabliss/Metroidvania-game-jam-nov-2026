@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ct8thdca80nrd"]
 
-[ext_resource type="Script" uid="uid://dahevmct3ian0" path="res://player_template/character_body_2d.gd" id="1_c4wsv"]
+[ext_resource type="Script" uid="uid://dahevmct3ian0" path="res://player_template/Player.gd" id="1_c4wsv"]
 [ext_resource type="Script" uid="uid://beo02rhwh7raf" path="res://player_template/attack.gd" id="2_br6u2"]
 [ext_resource type="Texture2D" uid="uid://bmwbumc35cnqm" path="res://icon.svg" id="3_170uw"]
 

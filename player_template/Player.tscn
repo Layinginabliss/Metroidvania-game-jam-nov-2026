@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ddvxkwpdnyfjm"]
+
+[ext_resource type="Script" uid="uid://dahevmct3ian0" path="res://player_template/Player.gd" id="1_jhdiu"]
+[ext_resource type="Script" uid="uid://b6gcfs78rgijw" path="res://player_template/components/AttackComponent.gd" id="2_n0o3n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ajr8"]
+radius = 18.0
+height = 96.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fyty"]
+size = Vector2(40, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4je70"]
+size = Vector2(82, 42)
+
+[node name="Player" type="CharacterBody2D" unique_id=1252337477 node_paths=PackedStringArray("attack_component")]
+script = ExtResource("1_jhdiu")
+attack_component = NodePath("AttackComponent")
+metadata/_custom_type_script = "uid://dahevmct3ian0"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2109987045]
+shape = SubResource("CapsuleShape2D_7ajr8")
+
+[node name="AttackComponent" type="Node2D" parent="." unique_id=948287954 node_paths=PackedStringArray("horizontal_attack_area", "vertical_attack_area")]
+script = ExtResource("2_n0o3n")
+horizontal_attack_area = NodePath("Horizontal")
+vertical_attack_area = NodePath("Vertical")
+metadata/_custom_type_script = "uid://b6gcfs78rgijw"
+
+[node name="Horizontal" type="Area2D" parent="AttackComponent" unique_id=913693901]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/Horizontal" unique_id=1984967586]
+position = Vector2(54, 0)
+shape = SubResource("RectangleShape2D_2fyty")
+
+[node name="Vertical" type="Area2D" parent="AttackComponent" unique_id=1286404325]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/Vertical" unique_id=939313580]
+position = Vector2(0, -74)
+shape = SubResource("RectangleShape2D_4je70")

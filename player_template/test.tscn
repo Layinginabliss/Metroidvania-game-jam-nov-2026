@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dgt5svwm7hj3g"]
+
+[ext_resource type="PackedScene" uid="uid://ddvxkwpdnyfjm" path="res://player_template/Player.tscn" id="1_sku6r"]
+[ext_resource type="Script" uid="uid://b85w1qoc1l6ba" path="res://common/Entity.gd" id="2_3ff6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fyty"]
+size = Vector2(1258, 112)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2fyty"]
+height = 174.0
+
+[node name="Test" type="Node2D" unique_id=640317332]
+
+[node name="Player" parent="." unique_id=896102591 instance=ExtResource("1_sku6r")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1396862252]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1414283634]
+position = Vector2(544, 604)
+shape = SubResource("RectangleShape2D_2fyty")
+
+[node name="Entity" type="CharacterBody2D" parent="." unique_id=207944800]
+position = Vector2(715, 449)
+script = ExtResource("2_3ff6g")
+metadata/_custom_type_script = "uid://b85w1qoc1l6ba"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entity" unique_id=2093604218]
+shape = SubResource("CapsuleShape2D_2fyty")
