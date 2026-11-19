@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://vin006j864gw"]
+
+[ext_resource type="Script" uid="uid://bsm8v6ml12kkf" path="res://feature_test/player_do_knock_back_to_enemy/character_body_2d.gd" id="1_ptiwq"]
+[ext_resource type="Script" uid="uid://taen3lg1ge3m" path="res://feature_test/player_do_knock_back_to_enemy/attack.gd" id="2_xvxh5"]
+[ext_resource type="Texture2D" uid="uid://bmwbumc35cnqm" path="res://icon.svg" id="3_1m7xg"]
+[ext_resource type="Script" uid="uid://dh6hw8dmkcvtx" path="res://feature_test/player_do_knock_back_to_enemy/knock_back_test.gd" id="4_s01s1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mijvv"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dxu3u"]
+points = PackedVector2Array(199, -31, 241, -202, 93, -135, -7, -31)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_bfipm"]
+points = PackedVector2Array(280, -10, 282, -129, 16, -103, -14, -1)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_6lgnl"]
+points = PackedVector2Array(136, -10, 252, -44, 24, -166, -54, -104)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pgddy"]
+points = PackedVector2Array(66, -15, 57, -75, -76, -136, -76, -51)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxu3u"]
+radius = 37.0
+height = 128.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_54b8x"]
+points = PackedVector2Array(78, 82, 83.20715, -6.8242493, -13, 33)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_mijvv"]
+points = PackedVector2Array(77.51196, 96.061966, 83.20715, -6.8242493, -11.990952, 37.69905)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0dhhg"]
+size = Vector2(101, 188)
+
+[node name="player_knock_back" type="Node2D" unique_id=1403853749]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1549694076]
+position = Vector2(602, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=753447084]
+position = Vector2(0, -32)
+shape = SubResource("WorldBoundaryShape2D_mijvv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1490375954]
+shape = SubResource("ConvexPolygonShape2D_dxu3u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1942158588]
+position = Vector2(262, -206)
+shape = SubResource("ConvexPolygonShape2D_bfipm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=402627161]
+position = Vector2(1, -426)
+shape = SubResource("ConvexPolygonShape2D_6lgnl")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=437461176]
+position = Vector2(-528, -160)
+shape = SubResource("ConvexPolygonShape2D_pgddy")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=265342668 groups=["player"]]
+position = Vector2(241, 301)
+script = ExtResource("1_ptiwq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1493077994]
+shape = SubResource("CapsuleShape2D_dxu3u")
+
+[node name="directions" type="Node2D" parent="CharacterBody2D" unique_id=105749910]
+
+[node name="right" type="Area2D" parent="CharacterBody2D/directions" unique_id=1043115534]
+script = ExtResource("2_xvxh5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/right" unique_id=1814614796]
+position = Vector2(57, -59)
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/right" unique_id=1874663489]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_1m7xg")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/right/cool_down" unique_id=1099042401]
+one_shot = true
+
+[node name="left" type="Area2D" parent="CharacterBody2D/directions" unique_id=478892912]
+position = Vector2(-199, -7)
+script = ExtResource("2_xvxh5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/left" unique_id=1690889228]
+position = Vector2(146, 10)
+rotation = 3.0979595
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/left" unique_id=2121853239]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_1m7xg")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/left/cool_down" unique_id=165666793]
+one_shot = true
+
+[node name="up" type="Area2D" parent="CharacterBody2D/directions" unique_id=2042038249]
+position = Vector2(-148, -95)
+script = ExtResource("2_xvxh5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/up" unique_id=2061222388]
+position = Vector2(112, 9.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_mijvv")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/up" unique_id=800592726]
+visible = false
+position = Vector2(153, -34)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_1m7xg")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/up/cool_down" unique_id=436610581]
+one_shot = true
+
+[node name="down" type="Area2D" parent="CharacterBody2D/directions" unique_id=692797160]
+position = Vector2(147, 86)
+rotation = 3.1101768
+script = ExtResource("2_xvxh5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/down" unique_id=1127761977]
+position = Vector2(121, 10.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/down" unique_id=1703427238]
+visible = false
+position = Vector2(157.17943, -35.080204)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_1m7xg")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/down/cool_down" unique_id=1390735532]
+one_shot = true
+
+[node name="knock_back" type="Area2D" parent="." unique_id=1887195206]
+position = Vector2(512, 453)
+script = ExtResource("4_s01s1")
+knock_back_force = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knock_back" unique_id=248627661]
+position = Vector2(16.5, 75)
+shape = SubResource("RectangleShape2D_0dhhg")
+debug_color = Color(0.97774726, 0, 0.40539092, 0.41960785)
+
+[node name="knock_back_lasting_time" type="Timer" parent="knock_back" unique_id=497684303]
+wait_time = 0.1
+one_shot = true
+
+[node name="recovery_time" type="Timer" parent="knock_back" unique_id=1881842133]
+wait_time = 0.1
+one_shot = true
+
+[node name="Label3" type="Label" parent="." unique_id=254343290]
+offset_left = 166.0
+offset_top = -105.0
+offset_right = 487.0
+offset_bottom = 24.0
+text = "player teliport behind the enemy attack..
+skill"
+
+[node name="Label2" type="Label" parent="." unique_id=131980659]
+offset_left = 171.0
+offset_top = -153.0
+offset_right = 720.0
+offset_bottom = -106.0
+text = "TODO : during dash player nock back get disabled.. and collition moved"
+
+[connection signal="body_entered" from="knock_back" to="knock_back" method="_on_body_entered"]
+[connection signal="timeout" from="knock_back/knock_back_lasting_time" to="knock_back" method="_on_nock_back_lasting_time_timeout"]
+[connection signal="timeout" from="knock_back/recovery_time" to="knock_back" method="_on_recovery_time_timeout"]
