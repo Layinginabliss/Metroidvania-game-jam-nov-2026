@@ -384,13 +384,14 @@ offset_left = 505.0
 offset_top = 189.0
 offset_right = 815.0
 offset_bottom = 212.0
-text = "now change the enmey state..."
+text = "now change the enmey state...
+when changing the player state .."
 
 [node name="Label2" type="Label" parent="." unique_id=561645639]
-offset_left = 508.0
-offset_top = 230.0
-offset_right = 818.0
-offset_bottom = 253.0
+offset_left = 507.0
+offset_top = 249.0
+offset_right = 817.0
+offset_bottom = 272.0
 text = "also return the player facing direction..."
 
 [node name="Label3" type="Label" parent="." unique_id=2138402415]
