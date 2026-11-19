@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cvbyoeb7gsag0"]
+
+[ext_resource type="Script" uid="uid://ocowyfpk2sbh" path="res://other_test/particle_gen_test.gd" id="1_s4qek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8jsy"]
+size = Vector2(1166, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4qek"]
+size = Vector2(32, 647)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_46suh"]
+radius = 17.029387
+
+[node name="Node2D" type="Node2D" unique_id=178931357]
+script = ExtResource("1_s4qek")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=337528425]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1619943424]
+position = Vector2(573, 643)
+shape = SubResource("RectangleShape2D_p8jsy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=464117333]
+position = Vector2(-2, 324.5)
+shape = SubResource("RectangleShape2D_s4qek")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=704579669]
+position = Vector2(1153, 319)
+shape = SubResource("RectangleShape2D_s4qek")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1462352379]
+position = Vector2(370, 206)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=925372988]
+position = Vector2(132, 0)
+shape = SubResource("CircleShape2D_46suh")
+
+[node name="despawn_timer" type="Timer" parent="RigidBody2D" unique_id=1417506852]
+one_shot = true
+
+[node name="Label" type="Label" parent="." unique_id=1114290533]
+offset_right = 312.0
+offset_bottom = 30.0
+text = "spawn the bodys in a circle and
+able to chose cut out angle"
+
+[connection signal="timeout" from="RigidBody2D/despawn_timer" to="RigidBody2D" method="_on_despawn_timer_timeout"]

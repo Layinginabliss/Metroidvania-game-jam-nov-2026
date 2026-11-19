@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dyf4oqq1nuu35"]
+
+[ext_resource type="PackedScene" uid="uid://kvyangjv6ibd" path="res://feature_test/player_spawn_behind_enemy/player_spawn_behind_enemy.tscn" id="1_pqo30"]
+[ext_resource type="PackedScene" uid="uid://tf1klb5fnk0l" path="res://feature_test/player_drag_enmey_toward_it_self/player_drag_enmey_toward_it_self.tscn" id="2_cub7q"]
+[ext_resource type="PackedScene" uid="uid://vin006j864gw" path="res://feature_test/player_do_knock_back_to_enemy/player_knock_back.tscn" id="3_cub7q"]
+[ext_resource type="PackedScene" uid="uid://cwhp8qae4txg" path="res://feature_test/enemey_knock_back/player_do_knock_back_to_enemy.tscn" id="4_fdthm"]
+[ext_resource type="PackedScene" uid="uid://btv83cph2v7tk" path="res://feature_test/projectile_fire_toward_player/projectile_fire.tscn" id="5_qkg4p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fdthm"]
+font_size = 124
+font_color = Color(0.9999917, 0.67002684, 0.66451603, 1)
+
+[node name="Node2D" type="Node2D" unique_id=1936638658]
+position = Vector2(-9, -9)
+
+[node name="Label3" type="Label" parent="." unique_id=766772728]
+offset_left = -315.0
+offset_top = 1189.0
+offset_right = 2852.0
+offset_bottom = 2224.0
+text = "main work flow
+#use the player template in the feature test folder
+ duplicate of that sence 
+make a new machanic you want with it
+#combine with rest using (hopefully state machine) 
+"
+label_settings = SubResource("LabelSettings_fdthm")
+
+[node name="Label4" type="Label" parent="." unique_id=1116480258]
+offset_left = -282.0
+offset_top = 2350.0
+offset_right = 3551.0
+offset_bottom = 3558.0
+text = "make moving platform
+attack that fill 1/2 of scren
+make emm
+bullet hell like parren
+only in boss are ? (were all are empty ?)
+enmey possetion (replace the nemy with palyer for some time ?)
+get palyer able to read text fetrue ...."
+label_settings = SubResource("LabelSettings_fdthm")
+
+[node name="Label2" type="Label" parent="." unique_id=1172020013]
+offset_left = 1950.0
+offset_top = -801.0
+offset_right = 4188.0
+offset_bottom = -596.0
+text = "enmey approch the player"
+label_settings = SubResource("LabelSettings_fdthm")
+
+[node name="player_spawn_behind_enemy" parent="." unique_id=719256098 instance=ExtResource("1_pqo30")]
+position = Vector2(14, 13)
+
+[node name="player_drag_enmey_toward_it_self" parent="." unique_id=185938337 instance=ExtResource("2_cub7q")]
+position = Vector2(1644, 34)
+
+[node name="player_knock_back" parent="." unique_id=1403853749 instance=ExtResource("3_cub7q")]
+position = Vector2(-1152, 11)
+
+[node name="player_do_knock_back_to_enemy" parent="." unique_id=1650877 instance=ExtResource("4_fdthm")]
+position = Vector2(-2396, -2)
+
+[node name="Node2D" parent="." unique_id=1308494746 instance=ExtResource("5_qkg4p")]
+position = Vector2(2860, 34)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=443371626]
+position = Vector2(3424, 336)
