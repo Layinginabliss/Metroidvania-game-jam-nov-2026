@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://cwhp8qae4txg"]
+
+[ext_resource type="Script" uid="uid://dxutoktji6sr6" path="res://feature_tests/enemey_knock_back/character_body_2d.gd" id="1_4oke0"]
+[ext_resource type="Script" uid="uid://6k81p3ycg0wq" path="res://feature_tests/enemey_knock_back/attack.gd" id="2_ngckp"]
+[ext_resource type="Texture2D" uid="uid://bmwbumc35cnqm" path="res://icon.svg" id="3_jngl8"]
+[ext_resource type="Script" uid="uid://d18gu2b0cu34" path="res://feature_tests/enemey_knock_back/enemy.gd" id="4_ngckp"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mijvv"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dxu3u"]
+points = PackedVector2Array(195, -19, 241, -202, 93, -135, 84, -21)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_bfipm"]
+points = PackedVector2Array(280, -10, 282, -129, 16, -103, -14, -1)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_6lgnl"]
+points = PackedVector2Array(136, -10, 252, -44, 24, -166, -54, -104)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pgddy"]
+points = PackedVector2Array(66, -15, 57, -75, -76, -136, -76, -51)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ngckp"]
+points = PackedVector2Array(-37, 93, -15, -127, -76, -136, -84, 121)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxu3u"]
+radius = 37.0
+height = 128.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_54b8x"]
+points = PackedVector2Array(78, 82, 83.20715, -6.8242493, -13, 33)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_mijvv"]
+points = PackedVector2Array(77.51196, 96.061966, 83.20715, -6.8242493, -11.990952, 37.69905)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jngl8"]
+radius = 37.5
+height = 134.0
+
+[node name="player_do_knock_back_to_enemy" type="Node2D" unique_id=1650877]
+
+[node name="knock_back" type="Node2D" parent="." unique_id=483240596]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="knock_back" unique_id=1682521934]
+position = Vector2(602, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knock_back/StaticBody2D" unique_id=1417674013]
+position = Vector2(0, -32)
+shape = SubResource("WorldBoundaryShape2D_mijvv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="knock_back/StaticBody2D" unique_id=1338985573]
+shape = SubResource("ConvexPolygonShape2D_dxu3u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="knock_back/StaticBody2D" unique_id=2019585151]
+position = Vector2(262, -206)
+shape = SubResource("ConvexPolygonShape2D_bfipm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="knock_back/StaticBody2D" unique_id=1272762248]
+position = Vector2(1, -426)
+shape = SubResource("ConvexPolygonShape2D_6lgnl")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="knock_back/StaticBody2D" unique_id=987248406]
+position = Vector2(-528, -160)
+shape = SubResource("ConvexPolygonShape2D_pgddy")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="knock_back/StaticBody2D" unique_id=957999138]
+position = Vector2(-528, -75)
+shape = SubResource("ConvexPolygonShape2D_ngckp")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="knock_back" unique_id=869100580]
+position = Vector2(241, 301)
+script = ExtResource("1_4oke0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knock_back/CharacterBody2D" unique_id=1127330880]
+shape = SubResource("CapsuleShape2D_dxu3u")
+
+[node name="directions" type="Node2D" parent="knock_back/CharacterBody2D" unique_id=1618705500]
+
+[node name="right" type="Area2D" parent="knock_back/CharacterBody2D/directions" unique_id=893309054]
+script = ExtResource("2_ngckp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knock_back/CharacterBody2D/directions/right" unique_id=835146696]
+position = Vector2(57, -59)
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="knock_back/CharacterBody2D/directions/right" unique_id=945677022]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_jngl8")
+
+[node name="attack_cool_down" type="Timer" parent="knock_back/CharacterBody2D/directions/right/cool_down" unique_id=1694323759]
+one_shot = true
+
+[node name="left" type="Area2D" parent="knock_back/CharacterBody2D/directions" unique_id=409318448]
+position = Vector2(-199, -7)
+script = ExtResource("2_ngckp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knock_back/CharacterBody2D/directions/left" unique_id=1155192424]
+position = Vector2(146, 10)
+rotation = 3.0979595
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="knock_back/CharacterBody2D/directions/left" unique_id=379926082]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_jngl8")
+
+[node name="attack_cool_down" type="Timer" parent="knock_back/CharacterBody2D/directions/left/cool_down" unique_id=1855946477]
+one_shot = true
+
+[node name="up" type="Area2D" parent="knock_back/CharacterBody2D/directions" unique_id=826138851]
+position = Vector2(-148, -95)
+script = ExtResource("2_ngckp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knock_back/CharacterBody2D/directions/up" unique_id=1567753935]
+position = Vector2(112, 9.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_mijvv")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="knock_back/CharacterBody2D/directions/up" unique_id=101898320]
+visible = false
+position = Vector2(153, -34)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_jngl8")
+
+[node name="attack_cool_down" type="Timer" parent="knock_back/CharacterBody2D/directions/up/cool_down" unique_id=473370494]
+one_shot = true
+
+[node name="down" type="Area2D" parent="knock_back/CharacterBody2D/directions" unique_id=1563195737]
+position = Vector2(147, 86)
+rotation = 3.1101768
+script = ExtResource("2_ngckp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knock_back/CharacterBody2D/directions/down" unique_id=1877295744]
+position = Vector2(121, 10.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="knock_back/CharacterBody2D/directions/down" unique_id=676423784]
+visible = false
+position = Vector2(157.17943, -35.080204)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_jngl8")
+
+[node name="attack_cool_down" type="Timer" parent="knock_back/CharacterBody2D/directions/down/cool_down" unique_id=1941577261]
+one_shot = true
+
+[node name="Label" type="Label" parent="knock_back" unique_id=1934337950]
+offset_left = 957.0
+offset_top = 4.0
+offset_right = 1136.0
+offset_bottom = 79.0
+text = "left click to attack
+righ click to dash
+wasd to move and look"
+
+[node name="enemy" type="CharacterBody2D" parent="knock_back" unique_id=1273439285 groups=["enemy"]]
+position = Vector2(482, 512)
+script = ExtResource("4_ngckp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knock_back/enemy" unique_id=1567352554]
+position = Vector2(-1.5, 0)
+shape = SubResource("CapsuleShape2D_jngl8")
+debug_color = Color(0.9721034, 0, 0.4466545, 0.41960785)
+
+[node name="knock_back_duration" type="Timer" parent="knock_back/enemy" unique_id=1406753554]
+wait_time = 0.1
+one_shot = true
+
+[node name="enemy2" type="CharacterBody2D" parent="knock_back" unique_id=1975592375 groups=["enemy"]]
+position = Vector2(877, 269)
+script = ExtResource("4_ngckp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="knock_back/enemy2" unique_id=75939318]
+position = Vector2(-1.5, 0)
+shape = SubResource("CapsuleShape2D_jngl8")
+debug_color = Color(0.9721034, 0, 0.4466545, 0.41960785)
+
+[node name="knock_back_duration" type="Timer" parent="knock_back/enemy2" unique_id=783807986]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="knock_back/enemy/knock_back_duration" to="knock_back/enemy" method="_on_knock_back_duration_timeout"]
+[connection signal="timeout" from="knock_back/enemy2/knock_back_duration" to="knock_back/enemy2" method="_on_knock_back_duration_timeout"]

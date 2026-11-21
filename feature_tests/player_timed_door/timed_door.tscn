@@ -1,0 +1,260 @@
+[gd_scene format=3 uid="uid://i3rjbs47yv3f"]
+
+[ext_resource type="Script" uid="uid://bjjquuo5cwomb" path="res://feature_tests/player_timed_door/character_body_2d.gd" id="1_txq6l"]
+[ext_resource type="Script" uid="uid://dbk8bx5ia2lny" path="res://feature_tests/player_timed_door/attack.gd" id="2_twjqp"]
+[ext_resource type="Texture2D" uid="uid://bmwbumc35cnqm" path="res://icon.svg" id="3_x15jx"]
+[ext_resource type="Script" uid="uid://ip70jeq85ibf" path="res://feature_tests/player_timed_door/static_body_2d_2.gd" id="4_xxw25"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mijvv"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dxu3u"]
+points = PackedVector2Array(196, -31, 244, -203, 93, -135, -7, -31)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_6lgnl"]
+points = PackedVector2Array(528, 90, 533, 41, -67, 28, -158, 95)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xwo7b"]
+points = PackedVector2Array(417, 88, 427, 23, -200, 26, -198, 86)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pgddy"]
+points = PackedVector2Array(240, 142, 225, 13, -73, 10, -78, 140)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xxw25"]
+points = PackedVector2Array(122, 92, 162, 49, 59, -6, 61, 89)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxu3u"]
+radius = 37.0
+height = 128.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_54b8x"]
+points = PackedVector2Array(78, 82, 83.20715, -6.8242493, -13, 33)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_mijvv"]
+points = PackedVector2Array(77.51196, 96.061966, 83.20715, -6.8242493, -11.990952, 37.69905)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwo7b"]
+size = Vector2(42, 260.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hnnp"]
+size = Vector2(85, 79)
+
+[node name="timed_door" type="Node2D" unique_id=297853571]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1336875498]
+position = Vector2(602, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=951548323]
+position = Vector2(0, -32)
+shape = SubResource("WorldBoundaryShape2D_mijvv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=2023262526]
+position = Vector2(285, -9)
+shape = SubResource("ConvexPolygonShape2D_dxu3u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=241221737]
+position = Vector2(1, -426)
+shape = SubResource("ConvexPolygonShape2D_6lgnl")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D" unique_id=158460393]
+position = Vector2(756, -419)
+shape = SubResource("ConvexPolygonShape2D_xwo7b")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D" unique_id=1464098698]
+position = Vector2(1675, -409)
+shape = SubResource("ConvexPolygonShape2D_xwo7b")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1449489104]
+position = Vector2(-528, -160)
+shape = SubResource("ConvexPolygonShape2D_pgddy")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=949717855]
+position = Vector2(-674, -368)
+shape = SubResource("ConvexPolygonShape2D_xxw25")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1874312941 groups=["player"]]
+position = Vector2(434, 555)
+script = ExtResource("1_txq6l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=59472580]
+shape = SubResource("CapsuleShape2D_dxu3u")
+
+[node name="directions" type="Node2D" parent="CharacterBody2D" unique_id=620249364]
+
+[node name="right" type="Area2D" parent="CharacterBody2D/directions" unique_id=272566901]
+script = ExtResource("2_twjqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/right" unique_id=135427240]
+position = Vector2(57, -59)
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/right" unique_id=955442862]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_x15jx")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/right/cool_down" unique_id=460030789]
+one_shot = true
+
+[node name="left" type="Area2D" parent="CharacterBody2D/directions" unique_id=1575927737]
+position = Vector2(-199, -7)
+script = ExtResource("2_twjqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/left" unique_id=1048471298]
+position = Vector2(146, 10)
+rotation = 3.0979595
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/left" unique_id=1087958861]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_x15jx")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/left/cool_down" unique_id=862086502]
+one_shot = true
+
+[node name="up" type="Area2D" parent="CharacterBody2D/directions" unique_id=531858079]
+position = Vector2(-148, -95)
+script = ExtResource("2_twjqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/up" unique_id=30779302]
+position = Vector2(112, 9.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_mijvv")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/up" unique_id=223818776]
+visible = false
+position = Vector2(153, -34)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_x15jx")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/up/cool_down" unique_id=1452375646]
+one_shot = true
+
+[node name="down" type="Area2D" parent="CharacterBody2D/directions" unique_id=951933775]
+position = Vector2(147, 86)
+rotation = 3.1101768
+script = ExtResource("2_twjqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/down" unique_id=1592926625]
+position = Vector2(121, 10.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/down" unique_id=1953681707]
+visible = false
+position = Vector2(157.17943, -35.080204)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_x15jx")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/down/cool_down" unique_id=578140179]
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1371069637]
+
+[node name="Label" type="Label" parent="." unique_id=1132448032]
+visible = false
+offset_left = 957.0
+offset_top = 4.0
+offset_right = 1136.0
+offset_bottom = 79.0
+text = "left click to attack
+righ click to dash
+wasd to move and look"
+
+[node name="Label2" type="Label" parent="." unique_id=2127081438]
+visible = false
+offset_left = 73.0
+offset_top = -104.0
+offset_right = 360.0
+offset_bottom = -29.0
+text = "camara need to snap or not follow.."
+
+[node name="Label3" type="Label" parent="." unique_id=1595122270]
+visible = false
+offset_left = 600.0
+offset_top = -119.0
+offset_right = 992.0
+offset_bottom = -44.0
+text = "don't include dash in the template project"
+
+[node name="door" type="StaticBody2D" parent="." unique_id=1356588261]
+position = Vector2(770, -4)
+script = ExtResource("4_xxw25")
+
+[node name="door" type="CollisionShape2D" parent="door" unique_id=1953526544]
+position = Vector2(0, 126.3125)
+shape = SubResource("RectangleShape2D_xwo7b")
+debug_color = Color(0.55214643, 0.552832, 0.31225735, 0.41960785)
+
+[node name="move_to" type="CollisionShape2D" parent="door" unique_id=1545886598]
+position = Vector2(0, -140)
+shape = SubResource("RectangleShape2D_xwo7b")
+disabled = true
+debug_color = Color(0.5814692, 0.4786188, 0.73175704, 0.41960785)
+
+[node name="area_button" type="Area2D" parent="door" unique_id=800208786]
+position = Vector2(-209, 551)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door/area_button" unique_id=303682305]
+position = Vector2(32.5, 29.5)
+shape = SubResource("RectangleShape2D_7hnnp")
+debug_color = Color(0.6916798, 0.290308, 0.9951915, 0.41960785)
+
+[node name="Label" type="Label" parent="door/area_button" unique_id=660759578]
+offset_left = -3.0
+offset_top = -86.0
+offset_right = 91.0
+offset_bottom = -63.0
+text = "press F"
+
+[node name="transform_duration" type="Timer" parent="door" unique_id=726677627]
+wait_time = 3.0
+one_shot = true
+
+[node name="door2" type="StaticBody2D" parent="." unique_id=2098734531]
+position = Vector2(2057, 288)
+rotation = 1.5707964
+script = ExtResource("4_xxw25")
+
+[node name="door" type="CollisionShape2D" parent="door2" unique_id=1482808312]
+position = Vector2(0, 126.3125)
+shape = SubResource("RectangleShape2D_xwo7b")
+debug_color = Color(0.55214643, 0.552832, 0.31225735, 0.41960785)
+
+[node name="move_to" type="CollisionShape2D" parent="door2" unique_id=90331969]
+position = Vector2(133, -9)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_xwo7b")
+disabled = true
+debug_color = Color(0.5814692, 0.4786188, 0.73175704, 0.41960785)
+
+[node name="area_button" type="Area2D" parent="door2" unique_id=2130905070]
+top_level = true
+position = Vector2(2301, 194)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door2/area_button" unique_id=264095192]
+position = Vector2(32.5, 29.5)
+shape = SubResource("RectangleShape2D_7hnnp")
+debug_color = Color(0.6916798, 0.290308, 0.9951915, 0.41960785)
+
+[node name="Label" type="Label" parent="door2/area_button" unique_id=473793333]
+offset_left = -3.0
+offset_top = -86.0
+offset_right = 91.0
+offset_bottom = -63.0
+text = "press F"
+
+[node name="transform_duration" type="Timer" parent="door2" unique_id=767875672]
+wait_time = 3.0
+one_shot = true
+
+[node name="Label4" type="Label" parent="." unique_id=812093317]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "the set craching settings for animation tween "
