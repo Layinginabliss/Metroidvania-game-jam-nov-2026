@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://bcfacu3j3h5ql"]
+
+[ext_resource type="Script" uid="uid://3rqqldi7mhaq" path="res://feature_tests/crawling_enemy/character_body_2d.gd" id="1_ph2c3"]
+[ext_resource type="Script" uid="uid://ulpvtcdn0xxr" path="res://feature_tests/crawling_enemy/attack.gd" id="2_n3g5d"]
+[ext_resource type="Texture2D" uid="uid://bmwbumc35cnqm" path="res://icon.svg" id="3_i122c"]
+[ext_resource type="Script" uid="uid://bn2vatg8x4qtf" path="res://feature_tests/crawling_enemy/enemy.gd" id="4_th2xw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mijvv"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dxu3u"]
+points = PackedVector2Array(196, -31, 244, -203, 93, -135, -7, -31)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_bfipm"]
+points = PackedVector2Array(280, -10, 282, -129, 16, -103, -14, -1)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_6lgnl"]
+points = PackedVector2Array(136, -10, 192, -48, 63, -102, -54, -104)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pgddy"]
+points = PackedVector2Array(66, -15, 57, -75, -76, -136, -76, -51)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxu3u"]
+radius = 37.0
+height = 128.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_54b8x"]
+points = PackedVector2Array(78, 82, 83.20715, -6.8242493, -13, 33)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_mijvv"]
+points = PackedVector2Array(77.51196, 96.061966, 83.20715, -6.8242493, -11.990952, 37.69905)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4wsv"]
+radius = 37.0
+height = 74.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jk8e7"]
+radius = 304.59317
+
+[node name="crawling_enemy" type="Node2D" unique_id=2046835401]
+
+[node name="crawl_and_hit_state_switch" type="Node2D" parent="." unique_id=2015947187]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="crawl_and_hit_state_switch" unique_id=1049699326]
+position = Vector2(602, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawl_and_hit_state_switch/StaticBody2D" unique_id=1214506530]
+position = Vector2(0, -32)
+shape = SubResource("WorldBoundaryShape2D_mijvv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="crawl_and_hit_state_switch/StaticBody2D" unique_id=428669168]
+shape = SubResource("ConvexPolygonShape2D_dxu3u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="crawl_and_hit_state_switch/StaticBody2D" unique_id=262895556]
+position = Vector2(262, -206)
+shape = SubResource("ConvexPolygonShape2D_bfipm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="crawl_and_hit_state_switch/StaticBody2D" unique_id=1509731109]
+position = Vector2(1, -426)
+shape = SubResource("ConvexPolygonShape2D_6lgnl")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="crawl_and_hit_state_switch/StaticBody2D" unique_id=1061967195]
+position = Vector2(-528, -160)
+shape = SubResource("ConvexPolygonShape2D_pgddy")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="crawl_and_hit_state_switch" unique_id=1665590287 groups=["player"]]
+position = Vector2(241, 301)
+script = ExtResource("1_ph2c3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawl_and_hit_state_switch/CharacterBody2D" unique_id=866774765]
+shape = SubResource("CapsuleShape2D_dxu3u")
+
+[node name="directions" type="Node2D" parent="crawl_and_hit_state_switch/CharacterBody2D" unique_id=1382447186]
+
+[node name="right" type="Area2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions" unique_id=2007073570]
+script = ExtResource("2_n3g5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/right" unique_id=1723640238]
+position = Vector2(57, -59)
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/right" unique_id=1678689389]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_i122c")
+
+[node name="attack_cool_down" type="Timer" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/right/cool_down" unique_id=1555579963]
+one_shot = true
+
+[node name="left" type="Area2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions" unique_id=370702743]
+position = Vector2(-199, -7)
+script = ExtResource("2_n3g5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/left" unique_id=1845695083]
+position = Vector2(146, 10)
+rotation = 3.0979595
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/left" unique_id=484952665]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_i122c")
+
+[node name="attack_cool_down" type="Timer" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/left/cool_down" unique_id=1805827877]
+one_shot = true
+
+[node name="up" type="Area2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions" unique_id=2026793949]
+position = Vector2(-148, -95)
+script = ExtResource("2_n3g5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/up" unique_id=72260095]
+position = Vector2(112, 9.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_mijvv")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/up" unique_id=332093877]
+visible = false
+position = Vector2(153, -34)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_i122c")
+
+[node name="attack_cool_down" type="Timer" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/up/cool_down" unique_id=1917750640]
+one_shot = true
+
+[node name="down" type="Area2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions" unique_id=1901906815]
+position = Vector2(147, 86)
+rotation = 3.1101768
+script = ExtResource("2_n3g5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/down" unique_id=412177012]
+position = Vector2(121, 10.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/down" unique_id=1875185791]
+visible = false
+position = Vector2(157.17943, -35.080204)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_i122c")
+
+[node name="attack_cool_down" type="Timer" parent="crawl_and_hit_state_switch/CharacterBody2D/directions/down/cool_down" unique_id=1002519207]
+one_shot = true
+
+[node name="enemy" type="CharacterBody2D" parent="crawl_and_hit_state_switch" unique_id=38601197 groups=["enemy"]]
+position = Vector2(428, 539)
+script = ExtResource("4_th2xw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawl_and_hit_state_switch/enemy" unique_id=1901927433]
+shape = SubResource("CapsuleShape2D_c4wsv")
+debug_color = Color(0.92360336, 0.010130175, 0.6812214, 0.41960785)
+
+[node name="Area2D" type="Area2D" parent="crawl_and_hit_state_switch/enemy" unique_id=722076400]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crawl_and_hit_state_switch/enemy/Area2D" unique_id=1022735894]
+shape = SubResource("CircleShape2D_jk8e7")
+debug_color = Color(0, 0.6, 0.69803923, 0.22352941)
+
+[node name="cool_down" type="Timer" parent="crawl_and_hit_state_switch/enemy" unique_id=973914522]
+autostart = true
+
+[connection signal="body_entered" from="crawl_and_hit_state_switch/enemy/Area2D" to="crawl_and_hit_state_switch/enemy" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="crawl_and_hit_state_switch/enemy/Area2D" to="crawl_and_hit_state_switch/enemy" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="crawl_and_hit_state_switch/enemy/cool_down" to="crawl_and_hit_state_switch/enemy" method="_on_cool_down_timeout"]

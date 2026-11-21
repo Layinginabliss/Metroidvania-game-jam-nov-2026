@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://hw2xrodl2lmd"]
+
+[ext_resource type="Script" uid="uid://b1gxmlv0pa4kf" path="res://feature_tests/player_fall_thow_doors/character_body_2d.gd" id="1_qtcif"]
+[ext_resource type="Script" uid="uid://bmmtw1brfetue" path="res://feature_tests/player_fall_thow_doors/attack.gd" id="2_c6ne7"]
+[ext_resource type="Texture2D" uid="uid://bmwbumc35cnqm" path="res://icon.svg" id="3_61142"]
+[ext_resource type="Script" uid="uid://b8fgemnjqcxhc" path="res://feature_tests/player_fall_thow_doors/fall_throw_doors.gd" id="4_3m5w7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mijvv"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dxu3u"]
+points = PackedVector2Array(192, 24, 222, -200, 80, -196, 34, 24)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_bfipm"]
+points = PackedVector2Array(280, -10, 279, -66, -182, -64, -184, -17)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pgddy"]
+points = PackedVector2Array(334, -76, 333, -127, -76, -136, -72, -81)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxu3u"]
+radius = 37.0
+height = 128.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_54b8x"]
+points = PackedVector2Array(78, 82, 83.20715, -6.8242493, -13, 33)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_mijvv"]
+points = PackedVector2Array(77.51196, 96.061966, 83.20715, -6.8242493, -11.990952, 37.69905)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fd3nd"]
+size = Vector2(271, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3m5w7"]
+size = Vector2(271, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unylk"]
+size = Vector2(271, 48)
+
+[node name="player_fall_thow_doors" type="Node2D" unique_id=795091247]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1605723911]
+position = Vector2(602, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1581163804]
+position = Vector2(-8, -10)
+shape = SubResource("WorldBoundaryShape2D_mijvv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1260479601]
+position = Vector2(256, -28)
+shape = SubResource("ConvexPolygonShape2D_dxu3u")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1949974898]
+position = Vector2(295, -284)
+shape = SubResource("ConvexPolygonShape2D_dxu3u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1973876249]
+position = Vector2(262, -206)
+shape = SubResource("ConvexPolygonShape2D_bfipm")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=885300178]
+position = Vector2(-536, -145)
+shape = SubResource("ConvexPolygonShape2D_pgddy")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1945481300 groups=["player"]]
+position = Vector2(561, 316)
+script = ExtResource("1_qtcif")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1774265877]
+shape = SubResource("CapsuleShape2D_dxu3u")
+
+[node name="directions" type="Node2D" parent="CharacterBody2D" unique_id=357714051]
+
+[node name="right" type="Area2D" parent="CharacterBody2D/directions" unique_id=1516675161]
+script = ExtResource("2_c6ne7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/right" unique_id=421629953]
+position = Vector2(57, -59)
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/right" unique_id=1025510104]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_61142")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/right/cool_down" unique_id=790041789]
+one_shot = true
+
+[node name="left" type="Area2D" parent="CharacterBody2D/directions" unique_id=1399337480]
+position = Vector2(-199, -7)
+script = ExtResource("2_c6ne7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/left" unique_id=899379524]
+position = Vector2(146, 10)
+rotation = 3.0979595
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/left" unique_id=2003632002]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_61142")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/left/cool_down" unique_id=1169372060]
+one_shot = true
+
+[node name="up" type="Area2D" parent="CharacterBody2D/directions" unique_id=1464330365]
+position = Vector2(-148, -95)
+script = ExtResource("2_c6ne7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/up" unique_id=223433240]
+position = Vector2(112, 9.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_mijvv")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/up" unique_id=189079118]
+visible = false
+position = Vector2(153, -34)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_61142")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/up/cool_down" unique_id=265396236]
+one_shot = true
+
+[node name="down" type="Area2D" parent="CharacterBody2D/directions" unique_id=1044992524]
+position = Vector2(147, 86)
+rotation = 3.1101768
+script = ExtResource("2_c6ne7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/directions/down" unique_id=1722060835]
+position = Vector2(121, 10.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="CharacterBody2D/directions/down" unique_id=1123544340]
+visible = false
+position = Vector2(157.17943, -35.080204)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_61142")
+
+[node name="attack_cool_down" type="Timer" parent="CharacterBody2D/directions/down/cool_down" unique_id=1956671640]
+one_shot = true
+
+[node name="Label" type="Label" parent="." unique_id=552973358]
+offset_left = 957.0
+offset_top = 4.0
+offset_right = 1136.0
+offset_bottom = 79.0
+text = "left click to attack
+righ click to dash
+wasd to move and look"
+
+[node name="fall_throw_doors" type="StaticBody2D" parent="." unique_id=1296481581]
+position = Vector2(411, 391)
+script = ExtResource("4_3m5w7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fall_throw_doors" unique_id=6595928]
+position = Vector2(129, 6)
+shape = SubResource("RectangleShape2D_fd3nd")
+debug_color = Color(0.59496343, 0.54457545, 0.106799684, 0.41960785)
+
+[node name="from_down_to_up" type="Area2D" parent="fall_throw_doors" unique_id=2093834565]
+position = Vector2(-1, 59)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fall_throw_doors/from_down_to_up" unique_id=1758904880]
+position = Vector2(131, -10)
+shape = SubResource("RectangleShape2D_3m5w7")
+debug_color = Color(0.7884913, 0.10720324, 0.99999994, 0)
+
+[node name="from_up_to_down" type="Area2D" parent="fall_throw_doors" unique_id=2095777449]
+position = Vector2(0, -82)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fall_throw_doors/from_up_to_down" unique_id=1720276786]
+position = Vector2(129.5, 46)
+shape = SubResource("RectangleShape2D_unylk")
+debug_color = Color(0.5882353, 0.49411765, 0.6313726, 0)
+
+[node name="Label" type="Label" parent="fall_throw_doors/from_up_to_down" unique_id=878889767]
+offset_left = 38.0
+offset_top = -35.0
+offset_right = 221.0
+offset_bottom = -12.0
+text = "press down to go throw"
+
+[connection signal="body_entered" from="fall_throw_doors/from_down_to_up" to="fall_throw_doors" method="_on_from_down_to_up_body_entered"]
+[connection signal="body_exited" from="fall_throw_doors/from_down_to_up" to="fall_throw_doors" method="_on_from_down_to_up_body_exited"]
+[connection signal="body_entered" from="fall_throw_doors/from_up_to_down" to="fall_throw_doors" method="_on_from_up_to_down_body_entered"]
+[connection signal="body_exited" from="fall_throw_doors/from_up_to_down" to="fall_throw_doors" method="_on_from_up_to_down_body_exited"]

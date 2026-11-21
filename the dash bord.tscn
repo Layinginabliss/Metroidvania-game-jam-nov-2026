@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://dyf4oqq1nuu35"]
 
-[ext_resource type="PackedScene" uid="uid://kvyangjv6ibd" path="res://feature_test/player_spawn_behind_enemy/player_spawn_behind_enemy.tscn" id="1_pqo30"]
-[ext_resource type="PackedScene" uid="uid://tf1klb5fnk0l" path="res://feature_test/player_drag_enmey_toward_it_self/player_drag_enmey_toward_it_self.tscn" id="2_cub7q"]
-[ext_resource type="PackedScene" uid="uid://vin006j864gw" path="res://feature_test/player_do_knock_back_to_enemy/player_knock_back.tscn" id="3_cub7q"]
-[ext_resource type="PackedScene" uid="uid://cwhp8qae4txg" path="res://feature_test/enemey_knock_back/player_do_knock_back_to_enemy.tscn" id="4_fdthm"]
-[ext_resource type="PackedScene" uid="uid://btv83cph2v7tk" path="res://feature_test/projectile_fire_toward_player/projectile_fire.tscn" id="5_qkg4p"]
+[ext_resource type="PackedScene" uid="uid://kvyangjv6ibd" path="res://feature_tests/player_spawn_behind_enemy/player_spawn_behind_enemy.tscn" id="1_pqo30"]
+[ext_resource type="PackedScene" uid="uid://tf1klb5fnk0l" path="res://feature_tests/player_drag_enmey_toward_it_self/player_drag_enmey_toward_it_self.tscn" id="2_cub7q"]
+[ext_resource type="PackedScene" uid="uid://vin006j864gw" path="res://feature_tests/player_do_knock_back_to_enemy/enemy_knock_back_player.tscn" id="3_cub7q"]
+[ext_resource type="PackedScene" uid="uid://cwhp8qae4txg" path="res://feature_tests/enemey_knock_back/player_do_knock_back_to_enemy.tscn" id="4_fdthm"]
+[ext_resource type="PackedScene" uid="uid://btv83cph2v7tk" path="res://feature_tests/projectile_fire_toward_player/projectile_fire.tscn" id="5_qkg4p"]
+[ext_resource type="Texture2D" uid="uid://dbehhd8nw0jyd" path="res://plans/443CD2EC-0786-4E8C-9A75-5BF21CABA52D.jpg" id="6_o6yfg"]
+[ext_resource type="PackedScene" uid="uid://bcfacu3j3h5ql" path="res://feature_tests/crawling_enemy/crawling_enemy.tscn" id="7_1rr3w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fdthm"]
 font_size = 124
@@ -37,7 +39,8 @@ make emm
 bullet hell like parren
 only in boss are ? (were all are empty ?)
 enmey possetion (replace the nemy with palyer for some time ?)
-get palyer able to read text fetrue ...."
+get palyer able to read text featrue ....
+enemy that crawl thoward the player and jump toward when it get clos"
 label_settings = SubResource("LabelSettings_fdthm")
 
 [node name="Label2" type="Label" parent="." unique_id=1172020013]
@@ -65,3 +68,14 @@ position = Vector2(2860, 34)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=443371626]
 position = Vector2(3424, 336)
+
+[node name="443cd2ec07864e8c9a755bf21caba52d" type="Sprite2D" parent="." unique_id=49348908]
+position = Vector2(6855, 2272)
+rotation = -1.5707964
+texture = ExtResource("6_o6yfg")
+
+[node name="crawling_enemy" parent="." unique_id=2046835401 instance=ExtResource("7_1rr3w")]
+position = Vector2(9307, 90)
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1105772113]
+points = PackedVector2Array(9363, 647, 8203, 1225)

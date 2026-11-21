@@ -1,0 +1,393 @@
+[gd_scene format=3 uid="uid://bjn03lybupydq"]
+
+[ext_resource type="Script" uid="uid://cyhjekn07mje8" path="res://state_combine_test/teleport_and_attack_from_behind/combined.gd" id="1_bd7ql"]
+[ext_resource type="Script" uid="uid://dpqht260lstce" path="res://state_combine_test/teleport_and_attack_from_behind/knock_back/character_body_2d.gd" id="1_ur642"]
+[ext_resource type="Script" uid="uid://dqqacw803m4kc" path="res://state_combine_test/teleport_and_attack_from_behind/button.gd" id="2_5ndbh"]
+[ext_resource type="Script" uid="uid://cohgpl8ju6m80" path="res://state_combine_test/teleport_and_attack_from_behind/knock_back/attack.gd" id="2_bd7ql"]
+[ext_resource type="Texture2D" uid="uid://bmwbumc35cnqm" path="res://icon.svg" id="3_5ndbh"]
+[ext_resource type="Script" uid="uid://52qkq1ci10tr" path="res://state_combine_test/teleport_and_attack_from_behind/knock_back/enemy.gd" id="4_quo48"]
+[ext_resource type="Script" uid="uid://41cupnro3ent" path="res://state_combine_test/teleport_and_attack_from_behind/spaw_behind/character_body_2d.gd" id="5_rq1ic"]
+[ext_resource type="Script" uid="uid://ppudkwm5mwwt" path="res://state_combine_test/teleport_and_attack_from_behind/spaw_behind/attack.gd" id="6_5o1yq"]
+[ext_resource type="Script" uid="uid://b7mpl6rk41qxb" path="res://state_combine_test/teleport_and_attack_from_behind/spaw_behind/enemy_facing.gd" id="7_wvycl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mijvv"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dxu3u"]
+points = PackedVector2Array(195, -19, 241, -202, 93, -135, 84, -21)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_bfipm"]
+points = PackedVector2Array(280, -10, 282, -129, 16, -103, -14, -1)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_6lgnl"]
+points = PackedVector2Array(136, -10, 252, -44, 24, -166, -54, -104)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pgddy"]
+points = PackedVector2Array(66, -15, 57, -75, -76, -136, -76, -51)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ngckp"]
+points = PackedVector2Array(-37, 93, -15, -127, -76, -136, -84, 121)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jngl8"]
+radius = 37.5
+height = 134.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xgg14"]
+radius = 34.0
+height = 132.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxxr1"]
+radius = 37.0
+height = 128.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_d4did"]
+points = PackedVector2Array(78, 82, 83.20715, -6.8242493, -13, 33)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxu3u"]
+radius = 37.0
+height = 128.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_54b8x"]
+points = PackedVector2Array(78, 82, 83.20715, -6.8242493, -13, 33)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_mijvv"]
+points = PackedVector2Array(77.51196, 96.061966, 83.20715, -6.8242493, -11.990952, 37.69905)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_keaji"]
+points = PackedVector2Array(77.51196, 96.061966, 83.20715, -6.8242493, -11.990952, 37.69905)
+
+[node name="Combined" type="Node2D" unique_id=373770188]
+script = ExtResource("1_bd7ql")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1686713149]
+position = Vector2(606, 594)
+
+[node name="Button" type="Button" parent="StaticBody2D" unique_id=1875038709]
+top_level = true
+offset_left = 173.0
+offset_top = 26.0
+offset_right = 283.0
+offset_bottom = 65.0
+text = "nock back"
+
+[node name="Label2" type="Label" parent="StaticBody2D" unique_id=561645639]
+offset_left = -108.0
+offset_top = -375.0
+offset_right = 303.0
+offset_bottom = -326.0
+text = "switch the enmey state if the plaer is near the enemy
+so state mannagers"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1518121703]
+position = Vector2(-11, 20)
+shape = SubResource("WorldBoundaryShape2D_mijvv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=919457009]
+shape = SubResource("ConvexPolygonShape2D_dxu3u")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1102410036]
+position = Vector2(262, -206)
+shape = SubResource("ConvexPolygonShape2D_bfipm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=380986212]
+position = Vector2(1, -426)
+shape = SubResource("ConvexPolygonShape2D_6lgnl")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=25765044]
+position = Vector2(-528, -160)
+shape = SubResource("ConvexPolygonShape2D_pgddy")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=1270622320]
+position = Vector2(-528, -75)
+shape = SubResource("ConvexPolygonShape2D_ngckp")
+
+[node name="Button" type="Button" parent="." unique_id=428509999]
+offset_left = 15.0
+offset_top = 25.0
+offset_right = 164.0
+offset_bottom = 63.0
+focus_mode = 0
+text = "state switch"
+script = ExtResource("2_5ndbh")
+
+[node name="enemy_states" type="Node2D" parent="." unique_id=1180389235]
+position = Vector2(121, -59)
+
+[node name="nock_back" type="CharacterBody2D" parent="enemy_states" unique_id=2006348506 groups=["enemy"]]
+position = Vector2(365, 515)
+script = ExtResource("4_quo48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_states/nock_back" unique_id=546007037]
+position = Vector2(-1.5, 0)
+shape = SubResource("CapsuleShape2D_jngl8")
+debug_color = Color(0.9721034, 0, 0.4466545, 0.41960785)
+
+[node name="knock_back_duration" type="Timer" parent="enemy_states/nock_back" unique_id=350426698]
+wait_time = 0.1
+one_shot = true
+
+[node name="spawn_behind" type="CharacterBody2D" parent="enemy_states" unique_id=432415800]
+position = Vector2(485, 520)
+script = ExtResource("7_wvycl")
+run_this_current_state = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_states/spawn_behind" unique_id=128722325]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_xgg14")
+debug_color = Color(0.96393615, 1.6364455e-06, 0.49861717, 0.41960785)
+
+[node name="right" type="Area2D" parent="enemy_states/spawn_behind" unique_id=753934425]
+visible = false
+position = Vector2(336, 511)
+script = ExtResource("6_5o1yq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="enemy_states/spawn_behind/right" unique_id=1945618589]
+position = Vector2(4, 9)
+shape = SubResource("CapsuleShape2D_wxxr1")
+debug_color = Color(0, 0.6, 0.69803923, 0.07058824)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="enemy_states/spawn_behind/right/CollisionShape2D2" unique_id=2116498408]
+position = Vector2(155, -55)
+shape = SubResource("ConvexPolygonShape2D_d4did")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="enemy_states/spawn_behind/right" unique_id=677927714]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_5ndbh")
+
+[node name="attack_cool_down" type="Timer" parent="enemy_states/spawn_behind/right/cool_down" unique_id=1316709209]
+one_shot = true
+
+[node name="check_for_player_coll" type="Area2D" parent="enemy_states/spawn_behind/right" unique_id=746190866]
+position = Vector2(-194, 6)
+
+[node name="left" type="Area2D" parent="enemy_states/spawn_behind" unique_id=695068485]
+position = Vector2(83, -25)
+script = ExtResource("6_5o1yq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_states/spawn_behind/left" unique_id=1303927282]
+position = Vector2(2, -4)
+shape = SubResource("CapsuleShape2D_wxxr1")
+debug_color = Color(0, 0.6, 0.69803923, 0.03529412)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="enemy_states/spawn_behind/left/CollisionShape2D" unique_id=2119956504]
+position = Vector2(-143, 26)
+rotation = 3.0979595
+shape = SubResource("ConvexPolygonShape2D_d4did")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="enemy_states/spawn_behind/left" unique_id=1312295706]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_5ndbh")
+
+[node name="attack_cool_down" type="Timer" parent="enemy_states/spawn_behind/left/cool_down" unique_id=1563024182]
+one_shot = true
+
+[node name="check_if_stuck" type="Timer" parent="enemy_states/spawn_behind" unique_id=808713425]
+autostart = true
+
+[node name="player_states" type="Node2D" parent="." unique_id=895977806]
+position = Vector2(93, -11)
+
+[node name="knock_back" type="CharacterBody2D" parent="player_states" unique_id=749118782]
+position = Vector2(129, 243)
+script = ExtResource("1_ur642")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_states/knock_back" unique_id=947595681]
+shape = SubResource("CapsuleShape2D_dxu3u")
+
+[node name="directions" type="Node2D" parent="player_states/knock_back" unique_id=1114725301]
+
+[node name="right" type="Area2D" parent="player_states/knock_back/directions" unique_id=1099042668]
+script = ExtResource("2_bd7ql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_states/knock_back/directions/right" unique_id=2136021606]
+position = Vector2(57, -59)
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="player_states/knock_back/directions/right" unique_id=351104139]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_5ndbh")
+
+[node name="attack_cool_down" type="Timer" parent="player_states/knock_back/directions/right/cool_down" unique_id=1009121611]
+one_shot = true
+
+[node name="left" type="Area2D" parent="player_states/knock_back/directions" unique_id=468751973]
+position = Vector2(-199, -7)
+script = ExtResource("2_bd7ql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_states/knock_back/directions/left" unique_id=448844212]
+position = Vector2(146, 10)
+rotation = 3.0979595
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="player_states/knock_back/directions/left" unique_id=207986405]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_5ndbh")
+
+[node name="attack_cool_down" type="Timer" parent="player_states/knock_back/directions/left/cool_down" unique_id=1619112061]
+one_shot = true
+
+[node name="up" type="Area2D" parent="player_states/knock_back/directions" unique_id=397828523]
+position = Vector2(-148, -95)
+script = ExtResource("2_bd7ql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_states/knock_back/directions/up" unique_id=726010605]
+position = Vector2(112, 9.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_mijvv")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="player_states/knock_back/directions/up" unique_id=1226384836]
+visible = false
+position = Vector2(153, -34)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_5ndbh")
+
+[node name="attack_cool_down" type="Timer" parent="player_states/knock_back/directions/up/cool_down" unique_id=803475218]
+one_shot = true
+
+[node name="down" type="Area2D" parent="player_states/knock_back/directions" unique_id=287316642]
+position = Vector2(147, 86)
+rotation = 3.1101768
+script = ExtResource("2_bd7ql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_states/knock_back/directions/down" unique_id=1777996047]
+position = Vector2(121, 10.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_54b8x")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="player_states/knock_back/directions/down" unique_id=636492619]
+visible = false
+position = Vector2(157.17943, -35.080204)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_5ndbh")
+
+[node name="attack_cool_down" type="Timer" parent="player_states/knock_back/directions/down/cool_down" unique_id=1915692571]
+one_shot = true
+
+[node name="Label2" type="Label" parent="player_states/knock_back" unique_id=836047990]
+offset_left = -55.0
+offset_top = -115.0
+offset_right = 66.0
+offset_bottom = -92.0
+text = "state nock back"
+
+[node name="teleport" type="CharacterBody2D" parent="player_states" unique_id=1979153800 node_paths=PackedStringArray("teleport_to") groups=["player"]]
+position = Vector2(240, 243)
+script = ExtResource("5_rq1ic")
+teleport_to = NodePath("../../enemy_states/spawn_behind")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_states/teleport" unique_id=1337722520]
+position = Vector2(17, -1)
+shape = SubResource("CapsuleShape2D_wxxr1")
+
+[node name="directions" type="Node2D" parent="player_states/teleport" unique_id=2088923631]
+
+[node name="right" type="Area2D" parent="player_states/teleport/directions" unique_id=706955941]
+script = ExtResource("6_5o1yq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_states/teleport/directions/right" unique_id=533888725]
+position = Vector2(57, -59)
+shape = SubResource("ConvexPolygonShape2D_d4did")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="player_states/teleport/directions/right" unique_id=1218703251]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_5ndbh")
+
+[node name="attack_cool_down" type="Timer" parent="player_states/teleport/directions/right/cool_down" unique_id=1364694071]
+one_shot = true
+
+[node name="left" type="Area2D" parent="player_states/teleport/directions" unique_id=137488171]
+position = Vector2(-199, -7)
+script = ExtResource("6_5o1yq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_states/teleport/directions/left" unique_id=2101001797]
+position = Vector2(147, 17)
+rotation = 3.0979595
+shape = SubResource("ConvexPolygonShape2D_d4did")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="player_states/teleport/directions/left" unique_id=1732837652]
+visible = false
+position = Vector2(107, -24)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_5ndbh")
+
+[node name="attack_cool_down" type="Timer" parent="player_states/teleport/directions/left/cool_down" unique_id=1620883696]
+one_shot = true
+
+[node name="up" type="Area2D" parent="player_states/teleport/directions" unique_id=1717066431]
+position = Vector2(-148, -95)
+script = ExtResource("6_5o1yq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_states/teleport/directions/up" unique_id=1585559107]
+position = Vector2(112, 9.999999)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_keaji")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="player_states/teleport/directions/up" unique_id=1137901636]
+visible = false
+position = Vector2(153, -34)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_5ndbh")
+
+[node name="attack_cool_down" type="Timer" parent="player_states/teleport/directions/up/cool_down" unique_id=774745865]
+one_shot = true
+
+[node name="down" type="Area2D" parent="player_states/teleport/directions" unique_id=1182729067]
+position = Vector2(147, 86)
+rotation = 3.1101768
+script = ExtResource("6_5o1yq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_states/teleport/directions/down" unique_id=1043185768]
+position = Vector2(112.8814, 5.5484195)
+rotation = 4.686209
+shape = SubResource("ConvexPolygonShape2D_d4did")
+debug_color = Color(0.7134779, 0.44991976, 0.48965138, 0.41960785)
+
+[node name="cool_down" type="Sprite2D" parent="player_states/teleport/directions/down" unique_id=1558988578]
+visible = false
+position = Vector2(157.17943, -35.080204)
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("3_5ndbh")
+
+[node name="attack_cool_down" type="Timer" parent="player_states/teleport/directions/down/cool_down" unique_id=313247324]
+one_shot = true
+
+[node name="Button2" type="Button" parent="player_states/teleport" unique_id=1955625254]
+top_level = true
+offset_left = 297.0
+offset_top = 26.0
+offset_right = 407.0
+offset_bottom = 65.0
+text = "teloport"
+
+[node name="Label" type="Label" parent="player_states/teleport" unique_id=81902274]
+offset_left = -70.0
+offset_top = -94.0
+offset_right = 92.0
+offset_bottom = -71.0
+text = "state_teliport behind"
+
+[node name="check_if_enmey_in_reach_to_attack" type="Area2D" parent="." unique_id=1396093803]
+
+[node name="player_teleport_behind_enemy_state_mannager" type="Node2D" parent="." unique_id=865698230]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="enemy_states/nock_back/knock_back_duration" to="enemy_states/nock_back" method="_on_knock_back_duration_timeout"]
+[connection signal="timeout" from="enemy_states/spawn_behind/check_if_stuck" to="enemy_states/spawn_behind" method="_on_check_if_stuck_timeout"]
