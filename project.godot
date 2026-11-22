@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="Metroidvania concept"
+run/main_scene="uid://dyf4oqq1nuu35"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+FmodManager="*uid://cds10pm7hwn3p"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/extract_scene/plugin.cfg")
+enabled=PackedStringArray("res://addons/extract_scene/plugin.cfg", "res://addons/fmod/plugin.cfg")
 
 [input]
 
