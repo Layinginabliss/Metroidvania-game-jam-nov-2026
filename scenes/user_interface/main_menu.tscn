@@ -1,0 +1,360 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdekdfm1xyjly"]
+
+[ext_resource type="Script" path="res://scenes/user_interface/main_menu.gd" id="1_pguvi"]
+[ext_resource type="Texture2D" uid="uid://btpescxskpw8i" path="res://assets/graphics/background/main-menu/black.png" id="2_r85m0"]
+[ext_resource type="AudioStream" uid="uid://dbs6asxp4qqqr" path="res://assets/sounds/bgm/01 - buffy - old fashion - intro.mp3" id="3_47d16"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pguvi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1279.0
+offset_bottom = 799.0
+texture = ExtResource("2_r85m0")
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBx" type="HBoxContainer" parent="CanvasLayer/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="VBx" type="VBoxContainer" parent="CanvasLayer/Margin/HBx"]
+layout_mode = 2
+alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/Margin/HBx/VBx"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/Margin/HBx/VBx/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBx" type="VBoxContainer" parent="CanvasLayer/Margin/HBx/VBx/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BtnStart" type="Button" parent="CanvasLayer/Margin/HBx/VBx/Panel/Margin/VBx"]
+layout_mode = 2
+text = "START GAME"
+
+[node name="BtnSettings" type="Button" parent="CanvasLayer/Margin/HBx/VBx/Panel/Margin/VBx"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="BtnControls" type="Button" parent="CanvasLayer/Margin/HBx/VBx/Panel/Margin/VBx"]
+layout_mode = 2
+text = "CONTROLS"
+
+[node name="BtnCredits" type="Button" parent="CanvasLayer/Margin/HBx/VBx/Panel/Margin/VBx"]
+layout_mode = 2
+text = "CREDITS"
+
+[node name="BtnExit" type="Button" parent="CanvasLayer/Margin/HBx/VBx/Panel/Margin/VBx"]
+layout_mode = 2
+text = "EXIT"
+
+[node name="VBx2" type="VBoxContainer" parent="CanvasLayer/Margin/HBx"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="PanelSettings" type="PanelContainer" parent="CanvasLayer/Margin/HBx/VBx2"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBx" type="VBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LblGraphics" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.5, 1)
+text = "GRAPHICS"
+horizontal_alignment = 1
+
+[node name="HSep1" type="HSeparator" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx"]
+layout_mode = 2
+
+[node name="Resolution" type="HBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RESOLUTION"
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx/Resolution"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="FullScr" type="HBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx/FullScr"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FULLSCREEN"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx/FullScr"]
+layout_mode = 2
+
+[node name="Borderless" type="HBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx/Borderless"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BORDERLESS"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx/Borderless"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="LblAudio" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.5, 1)
+text = "AUDIO"
+horizontal_alignment = 1
+
+[node name="HSep2" type="HSeparator" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx"]
+layout_mode = 2
+
+[node name="Sfx" type="HBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx/Sfx"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "EFFECTS"
+
+[node name="Slider" type="HSlider" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx/Sfx"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Bgm" type="HBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx/Bgm"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MUSIC"
+
+[node name="Slider" type="HSlider" parent="CanvasLayer/Margin/HBx/VBx2/PanelSettings/Margin/VBx/Bgm"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="PanelControls" type="PanelContainer" parent="CanvasLayer/Margin/HBx/VBx2"]
+visible = false
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBx" type="VBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BtnLeft" type="HBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx/BtnLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LEFT"
+
+[node name="Btn" type="Button" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx/BtnLeft"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Key"
+
+[node name="BtnRight" type="HBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx/BtnRight"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RIGHT"
+
+[node name="Btn" type="Button" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx/BtnRight"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Key"
+
+[node name="BtnJump" type="HBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx/BtnJump"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "JUMP"
+
+[node name="Btn" type="Button" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx/BtnJump"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Key"
+
+[node name="BtnAttack" type="HBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx/BtnAttack"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ATTACK"
+
+[node name="Btn" type="Button" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx/BtnAttack"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Key"
+
+[node name="BtnInteract" type="HBoxContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx/BtnInteract"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INTERACT"
+
+[node name="Btn" type="Button" parent="CanvasLayer/Margin/HBx/VBx2/PanelControls/Margin/VBx/BtnInteract"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Key"
+
+[node name="PanelCredits" type="PanelContainer" parent="CanvasLayer/Margin/HBx/VBx2"]
+visible = false
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="CanvasLayer/Margin/HBx/VBx2/PanelCredits"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CreditsLabel" type="Label" parent="CanvasLayer/Margin/HBx/VBx2/PanelCredits/Margin"]
+layout_mode = 2
+text = "Programming
+BurnOutCat
+-
+-
+-
+
+Art & sprites
+JohnTheArtistguy
+-
+-
+
+Audio & Music
+Premed
+-
+-
+
+Story & writting
+de_vinchee
+-
+-
+
+Thanks for playing!"
+horizontal_alignment = 1
+
+[node name="ControlRemap" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1240.0
+offset_bottom = 680.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ControlRemap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/ControlRemap"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ControlRemap/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/ControlRemap/Panel/MarginContainer"]
+layout_mode = 2
+text = "Press a new key..."
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/ControlRemap"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimerRemap" type="Timer" parent="CanvasLayer/ControlRemap"]
+wait_time = 0.5
+one_shot = true
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_47d16")
+autoplay = true
+bus = &"BGM"

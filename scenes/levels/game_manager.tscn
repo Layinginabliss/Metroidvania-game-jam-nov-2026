@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkikjjtafc8l6"]
+
+[ext_resource type="Script" path="res://scenes/levels/game_manager.gd" id="1_t44kl"]
+[ext_resource type="Texture2D" uid="uid://cai7dyl8a44om" path="res://assets/graphics/hud/Sprite-0001.png" id="2_ie2kp"]
+[ext_resource type="PackedScene" uid="uid://bnwu7bhnmjc64" path="res://scenes/user_interface/pause_menu.tscn" id="3_fpmw8"]
+[ext_resource type="AudioStream" uid="uid://dlu6g80dx7688" path="res://assets/sounds/bgm/Kim Lightyear - Falling Stars.mp3" id="4_0dl4o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bq7r1"]
+bg_color = Color(0.635294, 0.635294, 0.635294, 0.635294)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jbhf"]
+bg_color = Color(0.576471, 0.0509804, 0.0627451, 0.996078)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.635294, 0.635294, 0.635294, 0.635294)
+border_blend = true
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2lb40"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[node name="GameManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_t44kl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 430.0
+offset_bottom = 100.0
+
+[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer/Control/HUD"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="HealthHi" type="TextureRect" parent="CanvasLayer/Control/HUD/HealthBar"]
+layout_mode = 2
+texture = ExtResource("2_ie2kp")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HUD/HealthBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/HUD/HealthBar/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bq7r1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8jbhf")
+max_value = 5.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_fpmw8")]
+visible = false
+offset_left = 1.0
+offset_right = 1.0
+
+[node name="InteractPrompt" type="PanelContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2lb40")
+
+[node name="KeyLabel" type="Label" parent="CanvasLayer/InteractPrompt"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BGM" type="Node2D" parent="."]
+
+[node name="Music_1" type="AudioStreamPlayer" parent="BGM"]
+stream = ExtResource("4_0dl4o")
+autoplay = true
+bus = &"BGM"
+
+[node name="SFX" type="Node2D" parent="."]
