@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dlu6g80dx7688"
+path="res://.godot/imported/Kim Lightyear - Falling Stars.mp3-03b4e25f02176ca103e1dfe93826b966.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/bgm/Kim Lightyear - Falling Stars.mp3"
+dest_files=["res://.godot/imported/Kim Lightyear - Falling Stars.mp3-03b4e25f02176ca103e1dfe93826b966.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

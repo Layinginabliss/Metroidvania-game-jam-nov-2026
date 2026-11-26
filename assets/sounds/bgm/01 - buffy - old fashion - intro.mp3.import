@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbs6asxp4qqqr"
+path="res://.godot/imported/01 - buffy - old fashion - intro.mp3-fd17724290a8ea3cf2669c683d475478.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/bgm/01 - buffy - old fashion - intro.mp3"
+dest_files=["res://.godot/imported/01 - buffy - old fashion - intro.mp3-fd17724290a8ea3cf2669c683d475478.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
