@@ -2,8 +2,6 @@ extends Node2D
 
 signal screen_just_cleared
 
-@export var camera_limit_right: int = 2150
-@export var camera_limit_bottom: int = 720
 @export var night: bool = false
 
 var player: Node2D = null
@@ -15,11 +13,6 @@ func _ready():
 	if player == null:
 		printerr("No Player found in group 'player'!")
 		return
-
-	if player.has_node("Camera2D"):
-		var camera = player.get_node("Camera2D")
-		camera.limit_right = camera_limit_right
-		camera.limit_bottom = camera_limit_bottom
 
 	var spawn_name = Globals.next_spawn_point
 	var direction = Globals.next_facing_direction
@@ -37,12 +30,3 @@ func _ready():
 	elif direction == "right":
 		player.facing_direction = "right"
 		player.get_node("AnimatedSprite2D").flip_h = false
-
-# screen advancement, remove gate and extend camera limit
-func _physics_process(_delta):
-	if is_instance_valid(player) and player.has_node("Camera2D"):
-		var camera = player.get_node("Camera2D")
-		camera.limit_right = camera_limit_right
-		camera.limit_bottom = camera_limit_bottom
-	
-	# emit_signal("screen_just_cleared")

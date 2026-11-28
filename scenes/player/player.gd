@@ -5,7 +5,6 @@ var is_healing: bool = false
 var is_vulnerable: bool = true
 var is_knockback: bool = false
 var is_dead: bool = false
-var is_attacking: bool = false
 
 var facing_direction: String = "right"
 
@@ -14,16 +13,6 @@ var knockback_force: float = 0.0
 
 # knockback
 const KNOCKBACK_FORCE := 400.0
-
-# melee combo
-const COMBO_COUNT := 2
-
-var combo_stage: int = 0
-var combo_queued: bool = false
-
-var flicker_tween: Tween = null
-const FLICKER_MIN_ALPHA := 0.25
-const FLICKER_STEP_TIME := 0.08
 
 signal died
 
@@ -48,15 +37,6 @@ func _physics_process(_delta):
 				$AttackArea.scale.x = -1.0
 
 
-	# attack input first press starts the combo next presses queue the next hit
-	# NOTE may remove attacking
-	if Input.is_action_just_pressed("attack") and is_on_floor() and Globals.player_control and not is_knockback:
-		if not is_attacking:
-			_start_attack(1)
-		elif combo_stage < COMBO_COUNT:
-			combo_queued = true
-
-
 	# play appropriate animations
 	# skipped while knocked back or attacking
 	if not is_knockback and not is_attacking:
@@ -76,33 +56,7 @@ func _physics_process(_delta):
 					_play_anim("idle")
 
 
-func _start_attack(stage: int) -> void:
-	is_attacking = true
-	combo_stage = stage
-	_play_anim("attack_%d" % stage, true)
-
-
-# deals the damage
-func attack() -> void:
-	var already_hit := []
-	for area in $AttackArea.get_overlapping_areas():
-		if not area.is_in_group("enemy_hurtboxes"):
-			continue
-		var target = area if area.has_method("hit") else area.get_parent()
-		if target.has_method("hit") and not already_hit.has(target):
-			already_hit.append(target)
-			# last combo hit pushes the enemy back
-			if combo_stage >= COMBO_COUNT and target.has_method("hit_heavy"):
-				target.hit_heavy()
-			else:
-				target.hit()
-
-# ends the combo and cancels a hit that is still waiting on its timer
-func _stop_attack() -> void:
-	is_attacking = false
-	combo_stage = 0
-	combo_queued = false
-
+#attack component
 func hit(_enemy_position):
 	if is_vulnerable:
 		is_vulnerable = false
@@ -145,43 +99,12 @@ func hit(_enemy_position):
 
 			Globals.player_health -= 1
 
-# restart true plays from the start even if already playing
-func _play_anim(animation_name: String, restart: bool = false) -> void:
-	if $AnimationPlayer.has_animation(animation_name):
-		if restart:
-			$AnimationPlayer.stop()
-		$AnimationPlayer.play(animation_name)
 
+# health component
 func heal():
 	if Globals.player_health < Globals.HEALTH_MAX:
 		Globals.player_health += 1
 		$Sounds/HealthSound.play()
-
-func _start_hit_flicker() -> void:
-	_stop_hit_flicker()
-	$AnimatedSprite2D.modulate.a = 1.0
-
-	flicker_tween = create_tween().set_loops()
-	flicker_tween.tween_property($AnimatedSprite2D, "modulate:a", FLICKER_MIN_ALPHA, FLICKER_STEP_TIME)
-	flicker_tween.tween_property($AnimatedSprite2D, "modulate:a", 1.0, FLICKER_STEP_TIME)
-
-func _stop_hit_flicker() -> void:
-	if flicker_tween and flicker_tween.is_valid():
-		flicker_tween.kill()
-	flicker_tween = null
-	$AnimatedSprite2D.modulate.a = 1.0
-
-
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name.begins_with("jump"):
-		if is_on_floor():
-			_play_anim("idle")
-	elif anim_name.begins_with("attack"):
-		if combo_queued and combo_stage < COMBO_COUNT:
-			combo_queued = false
-			_start_attack(combo_stage + 1)
-		else:
-			_stop_attack()
 
 func _on_vulnerable_timer_timeout():
 	is_vulnerable = true

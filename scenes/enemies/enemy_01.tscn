@@ -1,20 +1,21 @@
-[gd_scene load_steps=29 format=3 uid="uid://dleg5l4a313wr"]
+[gd_scene format=3 uid="uid://dleg5l4a313wr"]
 
-[ext_resource type="Script" path="res://scenes/enemies/enemie_01.gd" id="1_teiu6"]
-[ext_resource type="Texture2D" uid="uid://c0j2aa76evfep" path="res://assets/graphics/enemies/knight_1/attack/0.png" id="2_3rsay"]
-[ext_resource type="Texture2D" uid="uid://kjs0tid0ssyn" path="res://assets/graphics/enemies/knight_1/death/0.png" id="12_8e45c"]
+[ext_resource type="Script" uid="uid://bvnkky7k73ykw" path="res://scenes/creature/creature.gd" id="1_r0rtg"]
+[ext_resource type="Texture2D" uid="uid://c0j2aa76evfep" path="res://assets/graphics/players/player/attack/0.png" id="2_3rsay"]
+[ext_resource type="Texture2D" uid="uid://kjs0tid0ssyn" path="res://assets/graphics/players/player/jump/0.png" id="12_8e45c"]
+[ext_resource type="Script" uid="uid://d1relwtfkber3" path="res://scenes/creature/creature_sprite.gd" id="14_b46ud"]
 [ext_resource type="AudioStream" uid="uid://beusdj05va45p" path="res://assets/sounds/sfx/hit19.mp3.ogg" id="37_vjqv4"]
 [ext_resource type="AudioStream" uid="uid://b10vt8vphl7pc" path="res://assets/sounds/sfx/swing-attack.mp3" id="38_vdl7s"]
 [ext_resource type="Texture2D" uid="uid://csrqwcnp5r7l4" path="res://assets/graphics/enemies/knight_1/hit/0.png" id="52_1tveq"]
-[ext_resource type="Texture2D" uid="uid://ptndabyqssvn" path="res://assets/graphics/enemies/knight_1/idle/0.png" id="53_4byjn"]
-[ext_resource type="Texture2D" uid="uid://gty3kjasn6r4" path="res://assets/graphics/enemies/knight_1/run/0.png" id="63_hsk0k"]
-[ext_resource type="Texture2D" uid="uid://jwkeltx172ml" path="res://assets/graphics/enemies/knight_1/run/1.png" id="64_0pndg"]
-[ext_resource type="Texture2D" uid="uid://dxpaxeu8eq7ix" path="res://assets/graphics/enemies/knight_1/run/2.png" id="65_afgge"]
-[ext_resource type="Texture2D" uid="uid://db0o7p74mu1jg" path="res://assets/graphics/enemies/knight_1/run/3.png" id="66_txfxa"]
-[ext_resource type="Texture2D" uid="uid://bk12m63fjdnbi" path="res://assets/graphics/enemies/knight_1/run/4.png" id="67_k35iu"]
-[ext_resource type="Texture2D" uid="uid://c63wjt6on3b1" path="res://assets/graphics/enemies/knight_1/run/5.png" id="68_h8ch7"]
-[ext_resource type="Texture2D" uid="uid://5i2r76m81mk6" path="res://assets/graphics/enemies/knight_1/run/6.png" id="69_x6vr0"]
-[ext_resource type="Texture2D" uid="uid://dfivg4o6lui88" path="res://assets/graphics/enemies/knight_1/run/7.png" id="70_nhs7x"]
+[ext_resource type="Texture2D" uid="uid://ptndabyqssvn" path="res://assets/graphics/players/player/idle/0.png" id="53_4byjn"]
+[ext_resource type="Texture2D" uid="uid://gty3kjasn6r4" path="res://assets/graphics/players/player/run/0.png" id="63_hsk0k"]
+[ext_resource type="Texture2D" uid="uid://jwkeltx172ml" path="res://assets/graphics/players/player/run/1.png" id="64_0pndg"]
+[ext_resource type="Texture2D" uid="uid://dxpaxeu8eq7ix" path="res://assets/graphics/players/player/run/2.png" id="65_afgge"]
+[ext_resource type="Texture2D" uid="uid://db0o7p74mu1jg" path="res://assets/graphics/players/player/run/3.png" id="66_txfxa"]
+[ext_resource type="Texture2D" uid="uid://bk12m63fjdnbi" path="res://assets/graphics/players/player/run/4.png" id="67_k35iu"]
+[ext_resource type="Texture2D" uid="uid://c63wjt6on3b1" path="res://assets/graphics/players/player/run/5.png" id="68_h8ch7"]
+[ext_resource type="Texture2D" uid="uid://5i2r76m81mk6" path="res://assets/graphics/players/player/run/6.png" id="69_x6vr0"]
+[ext_resource type="Texture2D" uid="uid://dfivg4o6lui88" path="res://assets/graphics/players/player/run/7.png" id="70_nhs7x"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cbeah"]
 animations = [{
@@ -261,11 +262,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vc0v1"]
 _data = {
-"attack": SubResource("Animation_63d1k"),
-"charge": SubResource("Animation_v06od"),
-"death": SubResource("Animation_0pd1r"),
-"hit": SubResource("Animation_s4e0u"),
-"idle": SubResource("Animation_vgqpy")
+&"attack": SubResource("Animation_63d1k"),
+&"charge": SubResource("Animation_v06od"),
+&"death": SubResource("Animation_0pd1r"),
+&"hit": SubResource("Animation_s4e0u"),
+&"idle": SubResource("Animation_vgqpy")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_behly"]
@@ -288,82 +289,78 @@ bg_color = Color(0, 0, 0, 0.929412)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfs6c"]
 bg_color = Color(0.576471, 0.0509804, 0.0627451, 0.996078)
 
-[node name="MeleeEnemy" type="CharacterBody2D" groups=["MeleeEnemies"]]
+[node name="MeleeEnemy" type="CharacterBody2D" unique_id=1897873409 groups=["MeleeEnemies"]]
 z_index = 3
 scale = Vector2(2.4, 2.4)
 collision_layer = 4
 collision_mask = 17
-script = ExtResource("1_teiu6")
+script = ExtResource("1_r0rtg")
 metadata/_edit_horizontal_guides_ = [-34.0]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=851650508]
 texture_filter = 1
 scale = Vector2(0.08, 0.08)
 sprite_frames = SubResource("SpriteFrames_cbeah")
 animation = &"attack"
+script = ExtResource("14_b46ud")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_vc0v1")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=694041983]
+libraries/ = SubResource("AnimationLibrary_vc0v1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemies", "Entities"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=821321321 groups=["Enemies", "Entities"]]
 position = Vector2(0, 17)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_behly")
 
-[node name="Hurtbox" type="Area2D" parent="." groups=["enemy_hurtboxes"]]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=185129117 groups=["enemy_hurtboxes"]]
 collision_layer = 64
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1615003724]
 shape = SubResource("CapsuleShape2D_ssgva")
 
-[node name="Areas" type="Node2D" parent="."]
+[node name="Areas" type="Node2D" parent="." unique_id=919086847]
 
-[node name="AttackArea" type="Area2D" parent="Areas"]
+[node name="AttackArea" type="Area2D" parent="Areas" unique_id=153733043]
 collision_layer = 0
 collision_mask = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/AttackArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/AttackArea" unique_id=1025112986]
 position = Vector2(15, -5.5)
 shape = SubResource("RectangleShape2D_44huu")
 
-[node name="NoticeArea" type="Area2D" parent="Areas"]
+[node name="NoticeArea" type="Area2D" parent="Areas" unique_id=377014086]
 light_mask = 16
 collision_layer = 16
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/NoticeArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/NoticeArea" unique_id=1796781609]
 visible = false
 shape = SubResource("CircleShape2D_lluka")
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." unique_id=245705436]
 
-[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="DeathSound" type="AudioStreamPlayer" parent="Sounds" unique_id=803505793]
 stream = ExtResource("37_vjqv4")
-bus = &"SFX"
 
-[node name="HitSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="HitSound" type="AudioStreamPlayer" parent="Sounds" unique_id=696682130]
 stream = ExtResource("37_vjqv4")
 volume_db = 1.0
-bus = &"SFX"
 
-[node name="AttackSound" type="AudioStreamPlayer" parent="Sounds"]
+[node name="AttackSound" type="AudioStreamPlayer" parent="Sounds" unique_id=141846948]
 stream = ExtResource("38_vdl7s")
-bus = &"SFX"
 
-[node name="Timers" type="Node" parent="."]
+[node name="Timers" type="Node" parent="." unique_id=1936062718]
 
-[node name="FreezeTimer" type="Timer" parent="Timers"]
+[node name="FreezeTimer" type="Timer" parent="Timers" unique_id=884023553]
 wait_time = 0.8
 one_shot = true
 
-[node name="DeathCleanup" type="Timer" parent="Timers"]
+[node name="DeathCleanup" type="Timer" parent="Timers" unique_id=618430510]
 wait_time = 0.8
 one_shot = true
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1371471529]
 offset_left = -24.1667
 offset_top = -32.5
 offset_right = 18.8333
@@ -375,7 +372,7 @@ step = 1.0
 value = 5.0
 show_percentage = false
 
-[node name="HeadMarker" type="Marker2D" parent="."]
+[node name="HeadMarker" type="Marker2D" parent="." unique_id=1396221701]
 position = Vector2(0, -32)
 
 [connection signal="timeout" from="Timers/FreezeTimer" to="." method="_on_freeze_timer_timeout"]

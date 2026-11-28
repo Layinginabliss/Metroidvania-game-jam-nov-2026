@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ch0pmd0d2v552"]
+
+[ext_resource type="Script" uid="uid://ba1ves2udoasp" path="res://scenes/attack/attack.gd" id="1_awmal"]
+
+[node name="Attack" type="Node" unique_id=623835803]
+script = ExtResource("1_awmal")

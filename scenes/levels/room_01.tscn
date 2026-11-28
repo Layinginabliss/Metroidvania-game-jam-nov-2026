@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dhfx1fsj0h78a" path="res://scenes/levels/room_01.gd" id="1_72afm"]
 [ext_resource type="Texture2D" uid="uid://dsrqijiebhbc8" path="res://assets/graphics/background/62025.png" id="2_4sxou"]
 [ext_resource type="Script" uid="uid://k27er1m2gkee" path="res://scenes/player/player_movement.gd" id="5_sw8xa"]
-[ext_resource type="PackedScene" uid="uid://dleg5l4a313wr" path="res://scenes/enemies/enemie_01.tscn" id="5_vwr6b"]
+[ext_resource type="PackedScene" uid="uid://dleg5l4a313wr" path="res://scenes/enemies/enemy_01.tscn" id="5_vwr6b"]
 [ext_resource type="PackedScene" uid="uid://6osl0lh4fg7k" path="res://scenes/player/player.tscn" id="10_omyku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxjjj"]
@@ -44,12 +44,13 @@ position = Vector2(401, 400)
 scale = Vector2(6.5, 6.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=209131000]
+position = Vector2(-0.7692313, -7.384615)
 scale = Vector2(0.333333, 0.333333)
 process_callback = 0
 limit_left = 0
 limit_top = 0
-limit_right = 0
-limit_bottom = 0
+limit_right = 2150
+limit_bottom = 720
 limit_smoothed = true
 position_smoothing_speed = 60.0
 rotation_smoothing_speed = 60.0
@@ -64,9 +65,9 @@ editor_draw_drag_margin = true
 position = Vector2(1490, 470)
 
 [node name="MeleeEnemy" parent="." unique_id=1402580464 instance=ExtResource("5_vwr6b")]
-position = Vector2(1690, 319)
+position = Vector2(603, 395)
 scale = Vector2(6.5, 6.5)
 
 [node name="PlayerMovement" type="Node" parent="." unique_id=103267125 node_paths=PackedStringArray("body")]
 script = ExtResource("5_sw8xa")
-body = NodePath("../Player")
+body = NodePath("../MeleeEnemy")

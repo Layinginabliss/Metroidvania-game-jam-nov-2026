@@ -21,9 +21,11 @@ var knockback_time: float = 0.0
 var activated: bool = false
 var is_alive: bool = true
 var is_frozen: bool = false
+var is_attacking:= false
 var is_mid_attack: bool = false
 var can_melee_attack: bool = true
-
+var direction
+var is_knockback := false
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var _attack_id: int = 0
@@ -44,6 +46,7 @@ var _knockback_sign: float = 1.0
 @onready var freeze_timer: Timer = get_node_or_null("Timers/FreezeTimer")
 @onready var death_cleanup_timer: Timer = get_node_or_null("Timers/DeathCleanup")
 
+signal died
 
 func _ready() -> void:
 	max_health = health
@@ -57,6 +60,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	direction = Input.get_axis("left", "right")
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
