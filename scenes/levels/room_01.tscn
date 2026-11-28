@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf5f5kc70auuw"]
+[gd_scene format=3 uid="uid://cf5f5kc70auuw"]
 
-[ext_resource type="Script" path="res://scenes/levels/room_01.gd" id="1_72afm"]
+[ext_resource type="Script" uid="uid://dhfx1fsj0h78a" path="res://scenes/levels/room_01.gd" id="1_72afm"]
 [ext_resource type="Texture2D" uid="uid://dsrqijiebhbc8" path="res://assets/graphics/background/62025.png" id="2_4sxou"]
+[ext_resource type="Script" uid="uid://k27er1m2gkee" path="res://scenes/player/player_movement.gd" id="5_sw8xa"]
 [ext_resource type="PackedScene" uid="uid://dleg5l4a313wr" path="res://scenes/enemies/enemie_01.tscn" id="5_vwr6b"]
 [ext_resource type="PackedScene" uid="uid://6osl0lh4fg7k" path="res://scenes/player/player.tscn" id="10_omyku"]
 
@@ -11,38 +12,38 @@ size = Vector2(2168, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tk4et"]
 size = Vector2(717.5, 20)
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" unique_id=1203933158]
 process_mode = 1
 script = ExtResource("1_72afm")
 
-[node name="backgrounds" type="Node2D" parent="."]
+[node name="backgrounds" type="Node2D" parent="." unique_id=594089972]
 
-[node name="Sprite2D" type="Sprite2D" parent="backgrounds"]
+[node name="Sprite2D" type="Sprite2D" parent="backgrounds" unique_id=567371077]
 position = Vector2(1077, 350)
 texture = ExtResource("2_4sxou")
 
-[node name="LevelBoundaries" type="StaticBody2D" parent="backgrounds"]
+[node name="LevelBoundaries" type="StaticBody2D" parent="backgrounds" unique_id=1951330721]
 collision_mask = 6
 
-[node name="Floor" type="CollisionShape2D" parent="backgrounds/LevelBoundaries"]
+[node name="Floor" type="CollisionShape2D" parent="backgrounds/LevelBoundaries" unique_id=1675328113]
 position = Vector2(1065, 623)
 shape = SubResource("RectangleShape2D_kxjjj")
 
-[node name="Left" type="CollisionShape2D" parent="backgrounds/LevelBoundaries"]
+[node name="Left" type="CollisionShape2D" parent="backgrounds/LevelBoundaries" unique_id=1580586177]
 position = Vector2(14, 351.25)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_tk4et")
 
-[node name="Right" type="CollisionShape2D" parent="backgrounds/LevelBoundaries"]
+[node name="Right" type="CollisionShape2D" parent="backgrounds/LevelBoundaries" unique_id=948122011]
 position = Vector2(2150, 355)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_tk4et")
 
-[node name="Player" parent="." instance=ExtResource("10_omyku")]
-position = Vector2(400, 400)
+[node name="Player" parent="." unique_id=813496094 instance=ExtResource("10_omyku")]
+position = Vector2(401, 400)
 scale = Vector2(6.5, 6.5)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=209131000]
 scale = Vector2(0.333333, 0.333333)
 process_callback = 0
 limit_left = 0
@@ -57,11 +58,15 @@ drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="SpawnPoints" type="Node2D" parent="."]
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1250210372]
 
-[node name="CabinDoor" type="Marker2D" parent="SpawnPoints"]
+[node name="CabinDoor" type="Marker2D" parent="SpawnPoints" unique_id=681890856]
 position = Vector2(1490, 470)
 
-[node name="MeleeEnemy" parent="." instance=ExtResource("5_vwr6b")]
+[node name="MeleeEnemy" parent="." unique_id=1402580464 instance=ExtResource("5_vwr6b")]
 position = Vector2(1690, 319)
 scale = Vector2(6.5, 6.5)
+
+[node name="PlayerMovement" type="Node" parent="." unique_id=103267125 node_paths=PackedStringArray("body")]
+script = ExtResource("5_sw8xa")
+body = NodePath("../Player")

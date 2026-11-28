@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://6osl0lh4fg7k"]
 
 [ext_resource type="Script" uid="uid://7ssekbehxco2" path="res://scenes/player/player.gd" id="1_ovnej"]
-[ext_resource type="Texture2D" uid="uid://fmilturs0yhi" path="res://assets/graphics/players/player/attack/0.png" id="2_ujiej"]
-[ext_resource type="Texture2D" uid="uid://fr52swvukadc" path="res://assets/graphics/players/player/death/0.png" id="14_7wkn0"]
-[ext_resource type="Texture2D" uid="uid://bly1jocsh70os" path="res://assets/graphics/players/player/fall/0.png" id="25_cqbgu"]
+[ext_resource type="Texture2D" uid="uid://c0j2aa76evfep" path="res://assets/graphics/players/player/attack/0.png" id="2_ujiej"]
+[ext_resource type="Texture2D" uid="uid://kjs0tid0ssyn" path="res://assets/graphics/players/player/death/0.png" id="14_7wkn0"]
+[ext_resource type="Texture2D" uid="uid://kjs0tid0ssyn" path="res://assets/graphics/players/player/fall/0.png" id="25_cqbgu"]
 [ext_resource type="AudioStream" uid="uid://bingmxx3by6h5" path="res://assets/sounds/sfx/footstep.ogg" id="27_ep0i3"]
-[ext_resource type="Texture2D" uid="uid://cpnsjg27drkgc" path="res://assets/graphics/players/player/hurt/0.png" id="28_dyfe2"]
+[ext_resource type="Texture2D" uid="uid://kjs0tid0ssyn" path="res://assets/graphics/players/player/hurt/0.png" id="28_dyfe2"]
 [ext_resource type="AudioStream" uid="uid://dcjs1wjtti2on" path="res://assets/sounds/sfx/health.mp3" id="31_lgug4"]
-[ext_resource type="Texture2D" uid="uid://ollbosmjyla2" path="res://assets/graphics/players/player/idle/0.png" id="32_47vg8"]
-[ext_resource type="Texture2D" uid="uid://dfxv8osly5rao" path="res://assets/graphics/players/player/jump/0.png" id="38_liy36"]
-[ext_resource type="Texture2D" uid="uid://7e3lwq122h1m" path="res://assets/graphics/players/player/run/0.png" id="41_gysdj"]
-[ext_resource type="Texture2D" uid="uid://eorw1vuu34r3" path="res://assets/graphics/players/player/run/1.png" id="42_tt3kk"]
-[ext_resource type="Texture2D" uid="uid://ddxryjnwwwyc3" path="res://assets/graphics/players/player/run/2.png" id="43_4sh81"]
-[ext_resource type="Texture2D" uid="uid://ds6o61m7u7beb" path="res://assets/graphics/players/player/run/3.png" id="44_rq3la"]
-[ext_resource type="Texture2D" uid="uid://do6eea3gkdofg" path="res://assets/graphics/players/player/run/4.png" id="45_gw4yl"]
-[ext_resource type="Texture2D" uid="uid://317myvdk0lkc" path="res://assets/graphics/players/player/run/5.png" id="46_3wiyo"]
-[ext_resource type="Texture2D" uid="uid://hycamphreleu" path="res://assets/graphics/players/player/run/6.png" id="47_8ktta"]
-[ext_resource type="Texture2D" uid="uid://c63j6ivnkewqb" path="res://assets/graphics/players/player/run/7.png" id="48_1bcpv"]
+[ext_resource type="Texture2D" uid="uid://ptndabyqssvn" path="res://assets/graphics/players/player/idle/0.png" id="32_47vg8"]
+[ext_resource type="Texture2D" uid="uid://kjs0tid0ssyn" path="res://assets/graphics/players/player/jump/0.png" id="38_liy36"]
+[ext_resource type="Texture2D" uid="uid://gty3kjasn6r4" path="res://assets/graphics/players/player/run/0.png" id="41_gysdj"]
+[ext_resource type="Texture2D" uid="uid://jwkeltx172ml" path="res://assets/graphics/players/player/run/1.png" id="42_tt3kk"]
+[ext_resource type="Texture2D" uid="uid://dxpaxeu8eq7ix" path="res://assets/graphics/players/player/run/2.png" id="43_4sh81"]
+[ext_resource type="Texture2D" uid="uid://db0o7p74mu1jg" path="res://assets/graphics/players/player/run/3.png" id="44_rq3la"]
+[ext_resource type="Texture2D" uid="uid://bk12m63fjdnbi" path="res://assets/graphics/players/player/run/4.png" id="45_gw4yl"]
+[ext_resource type="Texture2D" uid="uid://c63wjt6on3b1" path="res://assets/graphics/players/player/run/5.png" id="46_3wiyo"]
+[ext_resource type="Texture2D" uid="uid://5i2r76m81mk6" path="res://assets/graphics/players/player/run/6.png" id="47_8ktta"]
+[ext_resource type="Texture2D" uid="uid://dfivg4o6lui88" path="res://assets/graphics/players/player/run/7.png" id="48_1bcpv"]
 [ext_resource type="AudioStream" uid="uid://b10vt8vphl7pc" path="res://assets/sounds/sfx/swing-attack.mp3" id="53_xmoj3"]
 [ext_resource type="AudioStream" uid="uid://beusdj05va45p" path="res://assets/sounds/sfx/hit19.mp3.ogg" id="64_efrae"]
 [ext_resource type="AudioStream" uid="uid://brtedo3hvtvq2" path="res://assets/sounds/sfx/Jump.wav" id="67_veupc"]
@@ -100,10 +100,6 @@ animations = [{
 "name": &"run",
 "speed": 5.0
 }]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wsbty"]
-radius = 2.0
-height = 10.0
 
 [sub_resource type="Animation" id="Animation_rj0pe"]
 resource_name = "attack_1"
@@ -455,11 +451,13 @@ height = 38.6667
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7e1a"]
 size = Vector2(50.2221, 12.9622)
 
-[node name="Player" type="CharacterBody2D" unique_id=892592304]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wsbty"]
+radius = 2.0
+height = 10.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1253793656]
 z_index = 5
 scale = Vector2(3, 3)
-collision_layer = 2
-collision_mask = 25
 script = ExtResource("1_ovnej")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2077547715]
@@ -467,11 +465,6 @@ texture_filter = 1
 scale = Vector2(0.08, 0.08)
 sprite_frames = SubResource("SpriteFrames_vxsnf")
 animation = &"attack"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=333909873]
-position = Vector2(0, 17.667)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_wsbty")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=382071799]
 libraries/ = SubResource("AnimationLibrary_x6vp5")
@@ -521,6 +514,11 @@ one_shot = true
 
 [node name="HeadMarker" type="Marker2D" parent="." unique_id=2066909656]
 position = Vector2(0, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=333909873]
+position = Vector2(0, 17.667)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wsbty")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timers/VulnerableTimer" to="." method="_on_vulnerable_timer_timeout"]

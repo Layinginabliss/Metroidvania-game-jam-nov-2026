@@ -1,18 +1,7 @@
 extends CharacterBody2D
 
-var can_move := true
-
-const RUN_SPEED := 450
-
-# physics
-const GRAVITY := 4000
-const JUMP_VELOCITY := -1300
-const MAX_FALL_SPEED := 2000.0
-
-var is_jumping: bool = false
-var is_running: bool = false
+var direction: float = 0.0
 var is_healing: bool = false
-var is_moving: bool = false
 var is_vulnerable: bool = true
 var is_knockback: bool = false
 var is_dead: bool = false
@@ -36,23 +25,16 @@ var flicker_tween: Tween = null
 const FLICKER_MIN_ALPHA := 0.25
 const FLICKER_STEP_TIME := 0.08
 
+signal died
+
 func _ready():
 	add_to_group("player")
 
 func _physics_process(_delta):
-	# stop here while frozen or dead
-	if not can_move or is_dead:
-		velocity = Vector2.ZERO
-		return
-
-	Globals.player_pos = global_position
-
-	# movement input horizontal only
-	var direction: float = 0.0
 
 	if Globals.player_control:
 		direction = Input.get_axis("left", "right")
-
+		
 		# flip facing direction but not in the middle of an attack
 		if not is_attacking:
 			if Input.is_action_pressed("right") and facing_direction != "right":
@@ -65,40 +47,15 @@ func _physics_process(_delta):
 				$AnimatedSprite2D.flip_h = true
 				$AttackArea.scale.x = -1.0
 
-	# run detection
-	is_moving = abs(get_position_delta().x) >= 0.5 or abs(get_position_delta().y) >= 0.5
-	is_running = direction != 0.0
-
-	# horizontal movement knockback overrides player control otherwise run speed
-	if is_knockback:
-		velocity.x = knockback_dir.x * knockback_force
-	elif is_attacking:
-		velocity.x = 0.0
-	else:
-		velocity.x = direction * RUN_SPEED
-
-	# apply gravity
-	if not is_on_floor():
-		velocity.y += GRAVITY * _delta
-	else:
-		if is_jumping:
-			is_jumping = false
-
-	# jump input
-	if Input.is_action_just_pressed("jump") and is_on_floor() and Globals.player_control and not is_knockback and not is_attacking:
-		velocity.y = JUMP_VELOCITY
-		is_jumping = true
 
 	# attack input first press starts the combo next presses queue the next hit
+	# NOTE may remove attacking
 	if Input.is_action_just_pressed("attack") and is_on_floor() and Globals.player_control and not is_knockback:
 		if not is_attacking:
 			_start_attack(1)
 		elif combo_stage < COMBO_COUNT:
 			combo_queued = true
 
-	# clamp fall speed
-	if velocity.y > MAX_FALL_SPEED:
-		velocity.y = MAX_FALL_SPEED
 
 	# play appropriate animations
 	# skipped while knocked back or attacking
@@ -117,8 +74,6 @@ func _physics_process(_delta):
 			else:
 				if $AnimationPlayer.current_animation != "idle":
 					_play_anim("idle")
-
-	move_and_slide()
 
 
 func _start_attack(stage: int) -> void:
@@ -155,8 +110,8 @@ func hit(_enemy_position):
 		# last hit death hit
 		if Globals.player_health <= 1:
 			is_dead = true
+			died.emit()
 			is_knockback = false
-			can_move = false
 			velocity = Vector2.ZERO
 			_stop_attack()
 			_stop_hit_flicker()
@@ -215,14 +170,6 @@ func _stop_hit_flicker() -> void:
 		flicker_tween.kill()
 	flicker_tween = null
 	$AnimatedSprite2D.modulate.a = 1.0
-
-# freeze movement for dialogues or cutscenes
-func freeze_movement():
-	can_move = false
-	_stop_attack()
-
-func unfreeze_movement():
-	can_move = true
 
 
 func _on_animation_player_animation_finished(anim_name):
